@@ -9,63 +9,63 @@
   --bg:#080a0e;--surface:#0d1117;--panel:#111520;--border:#1c2333;
   --red:#c0392b;--orange:#d35400;--purple:#7d3c98;--green:#1e8449;
   --blue:#1a5276;--gold:#b7950b;
-  --text:#c8d6e8;--text-dim:#4a5a6e;--text-bright:#e8f0ff;--text-muted:#6a7a8e;
+  --text:#ffffff;--text-dim:#adbdd0;--text-bright:#ffffff;--text-muted:#d0dce8;
   --mono:ui-monospace,'Cascadia Code','Courier New',monospace;
   --sans:-apple-system,BlinkMacSystemFont,'Segoe UI',system-ui,sans-serif;
 }
 *{box-sizing:border-box;margin:0;padding:0}
 html{scroll-behavior:smooth}
-body{background:var(--bg);color:var(--text);font-family:var(--sans);font-weight:300;line-height:1.6;overflow-x:hidden}
+body{background:var(--bg);color:#ffffff;font-family:var(--sans);font-weight:300;line-height:1.6;overflow-x:hidden}
 
 nav{position:fixed;top:0;left:0;right:0;z-index:1000;background:rgba(8,10,14,.97);border-bottom:1px solid var(--border);display:flex;align-items:center;justify-content:space-between;padding:0 28px;height:50px}
 .nav-brand{font-family:var(--mono);font-size:11px;font-weight:600;color:var(--red);letter-spacing:.12em;text-transform:uppercase}
 .nav-links{display:flex;gap:2px}
-.nav-link{font-family:var(--mono);font-size:9px;text-transform:uppercase;letter-spacing:.08em;color:var(--text-dim);text-decoration:none;padding:5px 10px;border-radius:2px;transition:all .15s}
-.nav-link:hover{color:var(--text);background:var(--panel)}
+.nav-link{font-family:var(--mono);font-size:9px;text-transform:uppercase;letter-spacing:.08em;color:#c8d8ec;text-decoration:none;padding:5px 10px;border-radius:2px;transition:all .15s}
+.nav-link:hover{color:#ffffff;background:var(--panel)}
 
 .hero{min-height:100vh;display:flex;flex-direction:column;justify-content:center;padding:80px 56px 60px;border-bottom:1px solid var(--border)}
 .eyebrow{font-family:var(--mono);font-size:10px;color:var(--red);letter-spacing:.18em;text-transform:uppercase;margin-bottom:24px;display:flex;align-items:center;gap:12px}
 .eyebrow::before{content:'';display:block;width:28px;height:1px;background:var(--red)}
-.hero h1{font-size:clamp(30px,5vw,58px);font-weight:600;color:var(--text-bright);line-height:1.1;letter-spacing:-.02em;max-width:780px;margin-bottom:24px}
-.hero h1 em{font-style:italic;font-weight:300;color:var(--text-muted)}
-.lead{font-size:15px;color:var(--text-muted);max-width:600px;line-height:1.8;margin-bottom:36px}
+.hero h1{font-size:clamp(30px,5vw,58px);font-weight:600;color:#ffffff;line-height:1.1;letter-spacing:-.02em;max-width:780px;margin-bottom:24px}
+.hero h1 em{font-style:italic;font-weight:300;color:#ccdde8}
+.lead{font-size:15px;color:#d8e8f8;max-width:600px;line-height:1.8;margin-bottom:36px}
 .hero-stats{display:flex;border:1px solid var(--border);border-radius:3px;overflow:hidden;width:fit-content;margin-bottom:32px;flex-wrap:wrap}
 .hstat{padding:16px 24px;border-right:1px solid var(--border);text-align:center}
 .hstat:last-child{border-right:none}
-.hstat-num{font-family:var(--mono);font-size:26px;font-weight:600;color:var(--text-bright);display:block;line-height:1}
-.hstat-lbl{font-size:9px;color:var(--text-dim);text-transform:uppercase;letter-spacing:.1em;margin-top:5px;display:block}
-.source-box{font-family:var(--mono);font-size:9px;color:var(--text-dim);line-height:1.8;padding:11px 14px;border:1px solid var(--border);border-radius:2px;background:var(--surface);width:fit-content}
+.hstat-num{font-family:var(--mono);font-size:26px;font-weight:600;color:#ffffff;display:block;line-height:1}
+.hstat-lbl{font-size:9px;color:#c8d8ec;text-transform:uppercase;letter-spacing:.1em;margin-top:5px;display:block}
+.source-box{font-family:var(--mono);font-size:9px;color:#c8dcea;line-height:1.8;padding:11px 14px;border:1px solid var(--border);border-radius:2px;background:var(--surface);width:fit-content}
 
 section{padding:72px 56px;border-bottom:1px solid var(--border)}
 .sec-num{font-family:var(--mono);font-size:9px;color:var(--red);letter-spacing:.18em;text-transform:uppercase;margin-bottom:6px}
-.sec-title{font-size:clamp(20px,3vw,32px);font-weight:600;color:var(--text-bright);letter-spacing:-.02em;margin-bottom:10px;line-height:1.2}
-.sec-desc{font-size:13px;color:var(--text-muted);max-width:620px;line-height:1.8;margin-bottom:40px}
+.sec-title{font-size:clamp(20px,3vw,32px);font-weight:600;color:#ffffff;letter-spacing:-.02em;margin-bottom:10px;line-height:1.2}
+.sec-desc{font-size:13px;color:#ddeaf5;max-width:620px;line-height:1.8;margin-bottom:40px}
 
 .grid2{display:grid;grid-template-columns:1fr 1fr;gap:20px}
 .panel{background:var(--surface);border:1px solid var(--border);border-radius:3px;padding:22px}
-.panel h3{font-family:var(--mono);font-size:9px;text-transform:uppercase;letter-spacing:.14em;color:var(--text-dim);margin-bottom:18px;padding-bottom:9px;border-bottom:1px solid var(--border)}
+.panel h3{font-family:var(--mono);font-size:9px;text-transform:uppercase;letter-spacing:.14em;color:#c8d8ec;margin-bottom:18px;padding-bottom:9px;border-bottom:1px solid var(--border)}
 
 .kpi-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px}
 .kpi{text-align:center;padding:16px 10px;background:var(--bg);border:1px solid var(--border);border-radius:3px;position:relative;overflow:hidden}
 .kpi::before{content:'';position:absolute;top:0;left:0;right:0;height:2px}
 .kpi.r::before{background:var(--red)}.kpi.o::before{background:var(--orange)}.kpi.p::before{background:var(--purple)}.kpi.g::before{background:var(--green)}.kpi.b::before{background:var(--blue)}.kpi.gl::before{background:var(--gold)}
-.kpi-num{font-family:var(--mono);font-size:30px;font-weight:600;color:var(--text-bright);display:block;line-height:1;margin-bottom:5px}
-.kpi-lbl{font-size:9px;color:var(--text-dim);text-transform:uppercase;letter-spacing:.09em}
-.kpi-sub{font-family:var(--mono);font-size:8px;color:var(--text-dim);margin-top:3px;display:block}
+.kpi-num{font-family:var(--mono);font-size:30px;font-weight:600;color:#ffffff;display:block;line-height:1;margin-bottom:5px}
+.kpi-lbl{font-size:9px;color:#c8d8ec;text-transform:uppercase;letter-spacing:.09em}
+.kpi-sub{font-family:var(--mono);font-size:8px;color:#aac4dc;margin-top:3px;display:block}
 
 .stack-bar{display:flex;height:26px;border-radius:2px;overflow:hidden;margin-bottom:10px}
 .seg{display:flex;align-items:center;justify-content:center;font-family:var(--mono);font-size:8px;color:rgba(255,255,255,.7);min-width:18px;transition:opacity .2s;cursor:default}
 .seg:hover{opacity:.8}
 .sleg{display:flex;flex-wrap:wrap;gap:8px;margin-top:6px}
-.sleg-item{display:flex;align-items:center;gap:5px;font-size:10px;color:var(--text-muted)}
+.sleg-item{display:flex;align-items:center;gap:5px;font-size:10px;color:#c8d8e8}
 .sw{width:9px;height:9px;border-radius:1px;flex-shrink:0}
 
 .hbar-row{display:flex;align-items:center;gap:8px;margin-bottom:9px}
-.hbar-lbl{font-family:var(--mono);font-size:10px;color:var(--text);width:100px;flex-shrink:0}
+.hbar-lbl{font-family:var(--mono);font-size:10px;color:#ffffff;width:100px;flex-shrink:0}
 .hbar-track{flex:1;height:15px;background:var(--bg);border-radius:2px;overflow:hidden}
 .hbar-fill{height:100%;border-radius:2px;display:flex;align-items:center;padding-left:6px}
 .hbar-fill span{font-family:var(--mono);font-size:8px;color:rgba(255,255,255,.55);white-space:nowrap}
-.hbar-n{font-family:var(--mono);font-size:10px;color:var(--text-dim);width:36px;text-align:right}
+.hbar-n{font-family:var(--mono);font-size:10px;color:#c8d8ec;width:36px;text-align:right}
 
 canvas{display:block;width:100%}
 
@@ -73,37 +73,37 @@ canvas{display:block;width:100%}
 .insight.o{border-left-color:var(--orange)}.insight.p{border-left-color:var(--purple)}.insight.g{border-left-color:var(--green)}.insight.b{border-left-color:var(--blue)}
 .insight-lbl{font-family:var(--mono);font-size:8px;text-transform:uppercase;letter-spacing:.14em;color:var(--red);margin-bottom:5px}
 .insight.o .insight-lbl{color:var(--orange)}.insight.p .insight-lbl{color:var(--purple)}.insight.g .insight-lbl{color:var(--green)}.insight.b .insight-lbl{color:var(--blue)}
-.insight-txt{font-size:13px;color:var(--text);line-height:1.7}
+.insight-txt{font-size:13px;color:#e8f0f8;line-height:1.7}
 
 .net-layout{display:grid;grid-template-columns:1fr 280px;gap:20px;align-items:start}
 .net-block{background:var(--bg);border:1px solid var(--border);border-radius:3px;padding:14px;margin-bottom:10px}
-.net-block h4{font-family:var(--mono);font-size:9px;text-transform:uppercase;letter-spacing:.12em;color:var(--text-dim);margin-bottom:10px}
-.nleg-item{display:flex;align-items:center;gap:7px;margin-bottom:7px;font-size:11px;color:var(--text-muted)}
+.net-block h4{font-family:var(--mono);font-size:9px;text-transform:uppercase;letter-spacing:.12em;color:#c8d8ec;margin-bottom:10px}
+.nleg-item{display:flex;align-items:center;gap:7px;margin-bottom:7px;font-size:11px;color:#c8d8e8}
 .ndot{border-radius:50%;flex-shrink:0;border:2px solid}
 
 .map-layout{display:grid;grid-template-columns:1fr 280px;gap:20px;align-items:start}
 .nat-item{display:flex;align-items:center;justify-content:space-between;padding:7px 11px;background:var(--surface);border:1px solid var(--border);border-radius:2px;margin-bottom:3px;border-left-width:3px}
-.nat-name{font-size:11px;color:var(--text)}
-.nat-n{font-family:var(--mono);font-size:12px;font-weight:600;color:var(--text-bright)}
+.nat-name{font-size:11px;color:#ffffff}
+.nat-n{font-family:var(--mono);font-size:12px;font-weight:600;color:#ffffff}
 
 .plat-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-bottom:20px}
 .plat-card{background:var(--surface);border:1px solid var(--border);border-radius:3px;padding:18px;text-align:center}
 .plat-icon{font-size:24px;margin-bottom:8px;display:block}
-.plat-name{font-family:var(--mono);font-size:9px;text-transform:uppercase;letter-spacing:.09em;color:var(--text-dim);margin-bottom:6px}
-.plat-num{font-family:var(--mono);font-size:22px;font-weight:600;color:var(--text-bright);display:block}
-.plat-sub{font-size:10px;color:var(--text-muted);margin-top:3px;display:block}
+.plat-name{font-family:var(--mono);font-size:9px;text-transform:uppercase;letter-spacing:.09em;color:#c8d8ec;margin-bottom:6px}
+.plat-num{font-family:var(--mono);font-size:22px;font-weight:600;color:#ffffff;display:block}
+.plat-sub{font-size:10px;color:#d4e4f2;margin-top:3px;display:block}
 
 .mf-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:20px}
 .mf-card{background:var(--bg);border:1px solid var(--border);border-radius:3px;padding:14px}
 .mf-num{font-family:var(--mono);font-size:26px;font-weight:600;display:block;margin-bottom:3px}
-.mf-lbl{font-size:11px;color:var(--text-muted);line-height:1.5}
+.mf-lbl{font-size:11px;color:#c8d8e8;line-height:1.5}
 
 footer{padding:40px 56px;background:var(--surface);border-top:1px solid var(--border)}
 .foot-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:28px}
-.foot-col h4{font-family:var(--mono);font-size:9px;text-transform:uppercase;letter-spacing:.12em;color:var(--text-dim);margin-bottom:10px}
-.foot-col p,.foot-col li{font-size:11px;color:var(--text-muted);line-height:1.8;list-style:none}
+.foot-col h4{font-family:var(--mono);font-size:9px;text-transform:uppercase;letter-spacing:.12em;color:#c8d8ec;margin-bottom:10px}
+.foot-col p,.foot-col li{font-size:11px;color:#ccdde8;line-height:1.8;list-style:none}
 
-.tooltip{position:fixed;background:var(--panel);border:1px solid var(--border);border-radius:3px;padding:7px 11px;font-family:var(--mono);font-size:10px;color:var(--text-bright);pointer-events:none;z-index:9999;display:none;line-height:1.5;max-width:180px}
+.tooltip{position:fixed;background:var(--panel);border:1px solid var(--border);border-radius:3px;padding:7px 11px;font-family:var(--mono);font-size:10px;color:#ffffff;pointer-events:none;z-index:9999;display:none;line-height:1.5;max-width:180px}
 
 @media(max-width:860px){
   section,.hero{padding:48px 20px}
@@ -132,7 +132,7 @@ footer{padding:40px 56px;background:var(--surface);border-top:1px solid var(--bo
 <section class="hero" id="hero">
   <div class="eyebrow">Analytisk rapport &middot; Leiden University &middot; 2022&ndash;2025</div>
   <h1>Rysslands <em>lågtröskelagenter</em><br>i Europa</h1>
-  <p class="lead">Sedan den fullskaliga invasionen av Ukraina 2022 har rysk underrättelsetjänst rekryterat hundratals europeiska medborgare för sabotage, spionage och störningsoperationer. Inte tränade spioner — utan betalda budbärare, mordbrännare och vandaler rekryterade via Telegram för summor motsvarande några hundra euro.</p>
+  <p class="lead">Sedan den fullskaliga invasionen av Ukraina 2022 har rysk underrättelsetjänst rekryterat hundratals europeiska medborgare för sabotage, spionage och störningsoperationer. Inte sofistikerade spioner — utan betalda budbärare, eldstiftare och vandaler rekryterade via Telegram för summor motsvarande några hundra euro.</p>
   <div class="hero-stats">
     <div class="hstat"><span class="hstat-num">145</span><span class="hstat-lbl">Individer i dataset</span></div>
     <div class="hstat"><span class="hstat-num">23</span><span class="hstat-lbl">Nationaliteter</span></div>
@@ -151,7 +151,7 @@ footer{padding:40px 56px;background:var(--surface);border-top:1px solid var(--bo
 <section id="profil">
   <div class="sec-num">01 &mdash; Befolkningsprofil</div>
   <h2 class="sec-title">Vem är den typiske agenten?</h2>
-  <p class="sec-desc">Den sammansatta bilden utmanar föreställningen om den tränade underrättelseoperatören. Majoriteten är unga män motiverade av kontantersättning snarare än ideologisk övertygelse. Många visste inte att de jobbade för rysk underrättelsetjänst.</p>
+  <p class="sec-desc">Den sammansatta bilden utmanar föreställningen om den tränade underrättelseoperatören. Majoriteten är unga, manliga och motiverade av kontantersättning snarare än ideologisk övertygelse. Många visste inte att de jobbade för rysk underrättelsetjänst.</p>
 
   <div class="grid2">
     <div class="panel">
@@ -181,7 +181,7 @@ footer{padding:40px 56px;background:var(--surface);border-top:1px solid var(--bo
         <div class="sleg-item"><div class="sw" style="background:#1e8449"></div>Rekryterare (n=13) &mdash; bygger agentlager</div>
       </div>
       <div style="margin-top:22px">
-        <h3 style="font-family:var(--mono);font-size:9px;text-transform:uppercase;letter-spacing:.12em;color:var(--text-dim);margin-bottom:14px;padding-bottom:8px;border-bottom:1px solid var(--border)">Medianfödelseår per roll</h3>
+        <h3 style="font-family:var(--mono);font-size:9px;text-transform:uppercase;letter-spacing:.12em;color:#c8d8ec;margin-bottom:14px;padding-bottom:8px;border-bottom:1px solid var(--border)">Medianfödelseår per roll</h3>
         <div class="hbar-row"><div class="hbar-lbl">Rekryterare</div><div class="hbar-track"><div class="hbar-fill" style="width:100%;background:#1e8449"><span>Median 1997 — yngst</span></div></div><div class="hbar-n">n=12</div></div>
         <div class="hbar-row"><div class="hbar-lbl">Agent</div><div class="hbar-track"><div class="hbar-fill" style="width:97%;background:#c0392b"><span>Median 1995</span></div></div><div class="hbar-n">n=73</div></div>
         <div class="hbar-row"><div class="hbar-lbl">Handler</div><div class="hbar-track"><div class="hbar-fill" style="width:85%;background:#d35400"><span>Median 1991</span></div></div><div class="hbar-n">n=20</div></div>
@@ -193,7 +193,7 @@ footer{padding:40px 56px;background:var(--surface);border-top:1px solid var(--bo
   <!-- YOB histogram via canvas -->
   <div style="margin-top:20px" class="panel">
     <h3>Födelseårsfördelning (n=118 med känt födelseår)</h3>
-    <p style="font-size:12px;color:var(--text-muted);margin-bottom:16px">Stark koncentration i årgångarna 1997&ndash;2008. Intermediaries och Handlers är statistiskt äldre.</p>
+    <p style="font-size:12px;color:#c8d8e8;margin-bottom:16px">Stark koncentration i årgångarna 1997&ndash;2008. Intermediaries och Handlers är statistiskt äldre.</p>
     <canvas id="yobCanvas" height="150"></canvas>
     <div class="sleg" style="margin-top:10px">
       <div class="sleg-item"><div class="sw" style="background:#1a5276"></div>1950&ndash;1979</div>
@@ -204,7 +204,7 @@ footer{padding:40px 56px;background:var(--surface);border-top:1px solid var(--bo
 
   <div class="insight">
     <div class="insight-lbl">Analytisk slutsats</div>
-    <div class="insight-txt">Agentprofilen liknar inte traditionell spionagerekrytering. Den påminner om kriminella nätverks rekryteringsmönster: unga män med begränsade ekonomiska resurser som erbjuds snabb betalning för enkla uppdrag &mdash; bränna ett fordon, spraymåla en vägg, lämna ett paket. Många visste inte vem som stod bakom.</div>
+    <div class="insight-txt">Agentprofilen liknar inte traditionell spionagerekrytering. Den påminner om kriminella nätverks rekryteringsmönster: unga män med begränsade ekonomiska resurser som erbjuds snabba kontantbetalningar för enkla uppdrag &mdash; bränna ett fordon, spraymåla en vägg, lämna ett paket. Många visste inte vem som stod bakom.</div>
   </div>
 </section>
 
@@ -212,25 +212,25 @@ footer{padding:40px 56px;background:var(--surface);border-top:1px solid var(--bo
 <section id="natverk" style="background:var(--surface)">
   <div class="sec-num">02 &mdash; Nätverksstruktur</div>
   <h2 class="sec-title">Hur är nätverket organiserat?</h2>
-  <p class="sec-desc">Social nätverksanalys (SNA) av 185 noder och 319 relationer. Hierarkin är tydlig: Rysk stat &rarr; Kommando &rarr; Handlers &rarr; Rekryterare &rarr; Agenter. Intermediaries fungerar som avskärmande bryggnoder.</p>
+  <p class="sec-desc">Social nätverksanalys (SNA) av 185 noder och 319 relationer. Hierarkin är tydlig: Rysk stat &rarr; Kommando &rarr; Handlers &rarr; Rekryterare &rarr; Agenter. Intermediaries fungerar som avskärmande bryggnoder. Betweennesscentralitet mäter strukturell nyckelposition.</p>
 
   <div class="net-layout">
     <div>
       <canvas id="netCanvas" height="500" style="background:var(--bg);border:1px solid var(--border);border-radius:3px"></canvas>
-      <p style="font-size:10px;color:var(--text-dim);margin-top:7px;font-family:var(--mono)">Schematisk hierarkisk representation &middot; Klicka och dra för att flytta noder</p>
+      <p style="font-size:10px;color:#c8d8ec;margin-top:7px;font-family:var(--mono)">Schematisk hierarkisk representation &middot; Klicka och dra för att flytta noder</p>
     </div>
     <div>
       <div class="net-block">
         <h4>Rollkod</h4>
-        <div class="nleg-item"><div class="ndot" style="width:20px;height:20px;background:#7f1d1d;border-color:#c0392b"></div><div><strong style="color:var(--text)">Rysk stat</strong> &mdash; GRU/FSB</div></div>
-        <div class="nleg-item"><div class="ndot" style="width:16px;height:16px;background:#6b2c00;border-color:#d35400"></div><div><strong style="color:var(--text)">Handler</strong> &mdash; operativ ledning</div></div>
-        <div class="nleg-item"><div class="ndot" style="width:14px;height:14px;background:#3b1f52;border-color:#7d3c98"></div><div><strong style="color:var(--text)">Intermediary</strong> &mdash; avskärmning</div></div>
-        <div class="nleg-item"><div class="ndot" style="width:12px;height:12px;background:#0d3b1a;border-color:#1e8449"></div><div><strong style="color:var(--text)">Rekryterare</strong> &mdash; agentlager</div></div>
-        <div class="nleg-item"><div class="ndot" style="width:10px;height:10px;background:#1a2c4a;border-color:#2980b9"></div><div><strong style="color:var(--text)">Agent</strong> &mdash; utför uppdrag</div></div>
+        <div class="nleg-item"><div class="ndot" style="width:20px;height:20px;background:#7f1d1d;border-color:#c0392b"></div><div><strong style="color:#ffffff">Rysk stat</strong> &mdash; GRU/FSB</div></div>
+        <div class="nleg-item"><div class="ndot" style="width:16px;height:16px;background:#6b2c00;border-color:#d35400"></div><div><strong style="color:#ffffff">Handler</strong> &mdash; operativ ledning</div></div>
+        <div class="nleg-item"><div class="ndot" style="width:14px;height:14px;background:#3b1f52;border-color:#7d3c98"></div><div><strong style="color:#ffffff">Intermediary</strong> &mdash; avskärmning</div></div>
+        <div class="nleg-item"><div class="ndot" style="width:12px;height:12px;background:#0d3b1a;border-color:#1e8449"></div><div><strong style="color:#ffffff">Rekryterare</strong> &mdash; agentlager</div></div>
+        <div class="nleg-item"><div class="ndot" style="width:10px;height:10px;background:#1a2c4a;border-color:#2980b9"></div><div><strong style="color:#ffffff">Agent</strong> &mdash; utför uppdrag</div></div>
       </div>
       <div class="net-block">
         <h4>Betweenness-centralitet</h4>
-        <p style="font-size:10px;color:var(--text-dim);margin-bottom:10px">Genomsnitt per roll (huvudkluster)</p>
+        <p style="font-size:10px;color:#c8d8ec;margin-bottom:10px">Genomsnitt per roll (huvudkluster)</p>
         <div class="hbar-row"><div class="hbar-lbl" style="font-size:9px;width:90px">Kommando</div><div class="hbar-track"><div class="hbar-fill" style="width:100%;background:#c0392b"></div></div><div class="hbar-n" style="font-size:9px">0.112</div></div>
         <div class="hbar-row"><div class="hbar-lbl" style="font-size:9px;width:90px">Ops Manager</div><div class="hbar-track"><div class="hbar-fill" style="width:65%;background:#d35400"></div></div><div class="hbar-n" style="font-size:9px">0.073</div></div>
         <div class="hbar-row"><div class="hbar-lbl" style="font-size:9px;width:90px">Intermediary</div><div class="hbar-track"><div class="hbar-fill" style="width:53%;background:#7d3c98"></div></div><div class="hbar-n" style="font-size:9px">0.059</div></div>
@@ -240,7 +240,7 @@ footer{padding:40px 56px;background:var(--surface);border-top:1px solid var(--bo
       </div>
       <div class="net-block">
         <h4>Nätverksstatistik</h4>
-        <p style="font-size:11px;color:var(--text-muted);line-height:1.7">
+        <p style="font-size:11px;color:#c8d8e8;line-height:1.7">
           185 noder &middot; 319 kanter<br>
           140 noder i huvudkluster<br>
           65 kollaborativa dyader<br>
@@ -252,7 +252,7 @@ footer{padding:40px 56px;background:var(--surface);border-top:1px solid var(--bo
 
   <div class="insight o">
     <div class="insight-lbl">Strukturell observation</div>
-    <div class="insight-txt">Intermediaries har oproportionerligt hög sammankopplande funktion relativt sett till sin numerära andel. De fungerar som designade avskärmningsnoder &mdash; om en agent grips kan denne inte peka uppåt i hierarkin. Nätverket är konstruerat för förnekbarhet på alla nivåer utom kommandotoppen.</div>
+    <div class="insight-txt">Intermediaries har oproportionerligt hög betweennesscentralitet relativt sin numerära andel. De fungerar som designade avskärmningsnoder &mdash; om en agent grips kan denne inte peka uppåt i hierarkin. Nätverket är konstruerat för förnekbarhet på alla nivåer utom kommandotoppen.</div>
   </div>
 </section>
 
@@ -260,11 +260,11 @@ footer{padding:40px 56px;background:var(--surface);border-top:1px solid var(--bo
 <section id="geografi">
   <div class="sec-num">03 &mdash; Geografisk fördelning</div>
   <h2 class="sec-title">Varifrån rekryteras agenterna?</h2>
-  <p class="sec-desc">Totalt 136 individer med känd nationalitet från 23 länder. Ukraina dominerar numerärt &mdash; förklaras av närhet, diaspora och Rysslands utnyttjande av sårbarhet i konfliktzonen. Östeuropa och fd. Sovjet utgör kärnan, men rekrytering sker i hela EU.</p>
+  <p class="sec-desc">Totalt 136 individer med känd nationalitet från 23 länder. Ukraina dominerar numerärt &mdash; förklaras av proximitet, diaspora och Rysslands utnyttjande av sårbarhet i konfliktzonen. Östeuropa och fd. Sovjet utgör kärnan, men rekrytering sker i hela EU.</p>
 
   <div class="map-layout">
     <div>
-      <canvas id="mapCanvas" height="460" style="background:var(--surface);border:1px solid var(--border);border-radius:3px"></canvas>
+      <svg id="euroMap" viewBox="0 0 800 500" style="width:100%;display:block;background:#0a0e14;border:1px solid #1c2333;border-radius:3px"></svg>
     </div>
     <div>
       <div class="net-block">
@@ -273,10 +273,10 @@ footer{padding:40px 56px;background:var(--surface);border-top:1px solid var(--bo
       </div>
       <div class="net-block">
         <h4>Geografisk analys</h4>
-        <p style="font-size:11px;color:var(--text-muted);line-height:1.7">
-          <strong style="color:var(--text)">Östlig tyngdpunkt:</strong> UA, RU/duals, MD och BG utgör ~58% av känd nationalitet.<br><br>
-          <strong style="color:var(--text)">Västeuropeisk penetration:</strong> UK (n=6), NL (n=4) indikerar rekrytering i diasporasamhällen.<br><br>
-          <strong style="color:var(--text)">Balterna:</strong> Estland (n=8) och Lettland (n=7) &mdash; kopplat till ryskspråkig minoritetsrekrytering.
+        <p style="font-size:11px;color:#c8d8e8;line-height:1.7">
+          <strong style="color:#ffffff">Östlig tyngdpunkt:</strong> UA, RU/duals, MD och BG utgör ~58% av känd nationalitet.<br><br>
+          <strong style="color:#ffffff">Västeuropeisk penetration:</strong> UK (n=6), NL (n=4) indikerar rekrytering i diasporasamhällen.<br><br>
+          <strong style="color:#ffffff">Balterna:</strong> Estland (n=8) och Lettland (n=7) &mdash; kopplat till ryskspråkig minoritetsrekrytering.
         </p>
       </div>
     </div>
@@ -284,7 +284,7 @@ footer{padding:40px 56px;background:var(--surface);border-top:1px solid var(--bo
 
   <div class="insight p">
     <div class="insight-lbl">Underrättelseimplikation</div>
-    <div class="insight-txt">Att Ukraina toppar listan speglar Rysslands konfliktyta, förmågan att utnyttja sårbarhet &mdash; ekonomisk desperation, familjer i konfliktzon, sociala påtryckningar &mdash; En stor andel rekryterades under falska förespeglingar om uppdragets natur och uppdragsgivarens identitet.</div>
+    <div class="insight-txt">Att Ukraina toppar listan speglar Rysslands förmåga att utnyttja sårbarhet &mdash; ekonomisk desperation, familjer i konfliktzon, sociala påtryckningar &mdash; snarare än ukrainsk sympati för Ryssland. En stor andel rekryterades under falska förespeglingar om uppdragets natur och uppdragsgivarens identitet.</div>
   </div>
 </section>
 
@@ -292,7 +292,7 @@ footer{padding:40px 56px;background:var(--surface);border-top:1px solid var(--bo
 <section id="motivation" style="background:var(--surface)">
   <div class="sec-num">04 &mdash; Motivationsanalys</div>
   <h2 class="sec-title">Varför accepterar de?</h2>
-  <p class="sec-desc">Motivationsdata finns för 95 individer. Monetär ersättning dominerar kraftigt. Ideologisk övertygelse är sällsynt och förekommer primärt bland Handlers. Agenter "ovetande" om uppdraget är ett oroande mönster ur kontraspionageperspektiv.</p>
+  <p class="sec-desc">Motivationsdata finns för 95 individer. Monetär ersättning dominerar kraftigt. Ideologisk övertygelse är sällsynt och förekommer primärt bland Handlers. Agenter "ovetande" om uppdraget är ett särskilt oroande mönster ur kontraspionageperspektiv.</p>
 
   <div class="panel" style="margin-bottom:0">
     <h3>Motivationsmatris &mdash; antal individer per roll och motivation</h3>
@@ -301,7 +301,7 @@ footer{padding:40px 56px;background:var(--surface);border-top:1px solid var(--bo
 
   <div class="mf-grid">
     <div class="mf-card"><span class="mf-num" style="color:#3498db">~63%</span><div class="mf-lbl">av individer med känd motivation drivs av pengar. Beloppen är ofta låga &mdash; några hundra euro per uppdrag.</div></div>
-    <div class="mf-card"><span class="mf-num" style="color:#c0392b">~13%</span><div class="mf-lbl">motiveras av ideologi. Förekommer främst bland Handlers och Intermediaries med djupare insikt.</div></div>
+    <div class="mf-card"><span class="mf-num" style="color:#c0392b">~13%</span><div class="mf-lbl">motiveras av ideologi. Förekommer främst bland Handlers och Intermediaries med djupare operativ insikt.</div></div>
     <div class="mf-card"><span class="mf-num" style="color:#f39c12">~7%</span><div class="mf-lbl">är "ovetande". De trodde sig utföra ett lagligt uppdrag &mdash; fotografering, leverans, rekrytering av "medarbetare".</div></div>
   </div>
 
@@ -323,12 +323,12 @@ footer{padding:40px 56px;background:var(--surface);border-top:1px solid var(--bo
     <div class="plat-card"><span class="plat-icon">&#128241;</span><div class="plat-name">Multipla kanaler</div><span class="plat-num" style="color:#8e44ad">~60</span><span class="plat-sub">Telegram + annan kanal</span></div>
     <div class="plat-card"><span class="plat-icon">&#128101;</span><div class="plat-name">Facebook</div><span class="plat-num" style="color:#3b5998">6</span><span class="plat-sub">Primärt bulgariska agenter</span></div>
     <div class="plat-card"><span class="plat-icon">&#128222;</span><div class="plat-name">Viber / Telefon</div><span class="plat-num" style="color:#7d3daf">5</span><span class="plat-sub">Krypterade röstkanaler</span></div>
-    <div class="plat-card"><span class="plat-icon">&#10067;</span><div class="plat-name">Okänd</div><span class="plat-num" style="color:#4a5a6e">40</span><span class="plat-sub">28% saknar plattformsdata</span></div>
+    <div class="plat-card"><span class="plat-icon">&#10067;</span><div class="plat-name">Okänd</div><span class="plat-num" style="color:#9ab8d0">40</span><span class="plat-sub">28% saknar plattformsdata</span></div>
   </div>
 
   <div class="insight b">
     <div class="insight-lbl">Operativ observation</div>
-    <div class="insight-txt">Telegrammodellen möjliggör skalbar rekrytering: ett konto kan kontakta hundratals potentiella agenter med uppdragserbjudanden. Trenden mot flera kanaler &mdash; Telegram kombinerat med Zengi, WhatsApp eller Signal &mdash; indikerar att operatörerna söker redundans och robusthet i kommunikationsinfrastrukturen.</div>
+    <div class="insight-txt">Telegrammodellen möjliggör skalbar rekrytering: ett konto kan kontakta hundratals potentiella agenter med uppdragserbjudanden. Trenden mot multipla kanaler &mdash; Telegram kombinerat med Zengi, WhatsApp eller Signal &mdash; indikerar att operatörerna söker redundans och robusthet i kommunikationsinfrastrukturen.</div>
   </div>
 </section>
 
@@ -336,7 +336,7 @@ footer{padding:40px 56px;background:var(--surface);border-top:1px solid var(--bo
   <div class="foot-grid">
     <div class="foot-col"><h4>Datakälla</h4><p>Schuurman, B. (2026). Russia's Low-Level Agents in Europe, 2022&ndash;2025. Leiden University, Institute of Security and Global Affairs. Dataset v.2026-04-13. Fullständigt anonymiserat.</p></div>
     <div class="foot-col"><h4>Metodnoter</h4><ul><li>N=145 individer; N=144 i analyserbara fält</li><li>"Okänd" exkluderas i procentberäkningar</li><li>YOB-data: n=118 med känt födelseår</li><li>SNA: 185 noder, 319 kanter (bekräftade + infererade)</li><li>Nationalitetsdata: n=136 (ex. okänd)</li><li>Nätverksgraf: schematisk representation</li></ul></div>
-    <div class="foot-col"><h4>Visualisering</h4><p>Svensk OSINT &middot; 2026<br>Inga externa beroenden &mdash; fungerar offline.<br><br>All data är anonymiserad i ursprungsdatasetet.</p></div>
+    <div class="foot-col"><h4>Visualisering</h4><p>Svensk OSINT &middot; 2026<br>Inga externa beroenden &mdash; fungerar offline.<br><br>Avsedd för analytisk och pedagogisk användning. All data är anonymiserad i ursprungsdatasetet.</p></div>
   </div>
 </footer>
 
@@ -344,6 +344,7 @@ footer{padding:40px 56px;background:var(--surface);border-top:1px solid var(--bo
 // ── TOOLTIP ──
 const tt = document.getElementById('tt');
 function showTT(x, y, html) { tt.innerHTML = html; tt.style.left = (x+14)+'px'; tt.style.top = (y+14)+'px'; tt.style.display = 'block'; }
+function moveTooltip(e) { tt.style.left=(e.clientX+14)+'px'; tt.style.top=(e.clientY+14)+'px'; }
 function hideTT() { tt.style.display = 'none'; }
 
 // ── YOB HISTOGRAM (Canvas) ──
@@ -372,7 +373,7 @@ function drawYOB() {
     ctx.setLineDash([2,4]);
     ctx.beginPath(); ctx.moveTo(m.l, y); ctx.lineTo(m.l+w, y); ctx.stroke();
     ctx.setLineDash([]);
-    ctx.fillStyle = '#4a5a6e'; ctx.font = '8px ui-monospace,monospace';
+    ctx.fillStyle = '#9ab8d0'; ctx.font = '8px ui-monospace,monospace';
     ctx.textAlign = 'right'; ctx.fillText(v, m.l-4, y+3);
   });
 
@@ -387,7 +388,7 @@ function drawYOB() {
     ctx.roundRect(x, by, bw2, bh, 2);
     ctx.fill();
     // X label
-    ctx.fillStyle = '#4a5a6e'; ctx.font = '8px ui-monospace,monospace'; ctx.textAlign = 'center';
+    ctx.fillStyle = '#9ab8d0'; ctx.font = '8px ui-monospace,monospace'; ctx.textAlign = 'center';
     ctx.fillText(bin.s, m.l + i*bw + bw/2, H-4);
   });
 
@@ -543,110 +544,199 @@ function drawNetwork() {
   canvas.addEventListener('mouseleave', () => { drag = null; hideTT(); });
 }
 
-// ── MAP (Canvas) ──
+// ── MAP (SVG) ──
 function drawMap() {
-  const canvas = document.getElementById('mapCanvas');
-  canvas.width = canvas.parentElement.clientWidth - 300 - 20;
-  if (canvas.width < 100) canvas.width = canvas.parentElement.clientWidth;
-  const W = canvas.width, H = canvas.height;
-  const ctx = canvas.getContext('2d');
+  const svg = document.getElementById('euroMap');
+  if (!svg) return;
+  svg.innerHTML = '';
+
+  const W = 800, H = 500;
 
   const nats = [
-    {name:'Ukraina', n:28, lat:49.0, lng:31.5},
-    {name:'Ryssland/duals', n:24, lat:59.5, lng:52.0},
-    {name:'Moldavien', n:15, lat:47.4, lng:28.4},
-    {name:'Bulgarien', n:11, lat:42.7, lng:25.5},
-    {name:'Estland', n:8, lat:58.6, lng:25.0},
-    {name:'Lettland', n:7, lat:56.9, lng:24.6},
-    {name:'Vitryssland', n:7, lat:53.7, lng:28.0},
-    {name:'UK', n:6, lat:52.5, lng:-1.5},
-    {name:'Serbien', n:5, lat:44.0, lng:21.0},
-    {name:'Nederländerna', n:4, lat:52.1, lng:5.3},
-    {name:'Colombia', n:4, lat:4.6, lng:-58.0},
-    {name:'Polen', n:3, lat:51.9, lng:19.1},
-    {name:'Litauen', n:2, lat:55.2, lng:24.0},
-    {name:'Kuba', n:2, lat:25.0, lng:-55.0},
-    {name:'Tyskland', n:2, lat:51.2, lng:10.5},
-    {name:'Rumänien', n:1, lat:45.9, lng:25.0},
-    {name:'Österrike', n:1, lat:47.5, lng:14.5},
-    {name:'Spanien', n:1, lat:40.4, lng:-3.7},
-    {name:'Bosnien', n:1, lat:43.9, lng:17.7},
+    {name:'Ukraina',       n:28, lat:49.0, lng:31.5, col:'#c0392b'},
+    {name:'Ryssland/duals',n:24, lat:58.0, lng:50.0, col:'#e74c3c'},
+    {name:'Moldavien',     n:15, lat:47.4, lng:28.4, col:'#c0392b'},
+    {name:'Bulgarien',     n:11, lat:42.7, lng:25.5, col:'#c0392b'},
+    {name:'Estland',       n:8,  lat:58.6, lng:25.0, col:'#e67e22'},
+    {name:'Lettland',      n:7,  lat:56.9, lng:24.6, col:'#e67e22'},
+    {name:'Vitryssland',   n:7,  lat:53.7, lng:28.0, col:'#e67e22'},
+    {name:'UK',            n:6,  lat:52.5, lng:-1.5, col:'#e67e22'},
+    {name:'Serbien',       n:5,  lat:44.0, lng:21.0, col:'#d35400'},
+    {name:'Nederl.',       n:4,  lat:52.1, lng:5.3,  col:'#d35400'},
+    {name:'Colombia',      n:4,  lat:4.6,  lng:-74.1,col:'#d35400'},
+    {name:'Polen',         n:3,  lat:51.9, lng:19.1, col:'#b7950b'},
+    {name:'Litauen',       n:2,  lat:55.2, lng:24.0, col:'#b7950b'},
+    {name:'Kuba',          n:2,  lat:22.0, lng:-79.5,col:'#b7950b'},
+    {name:'Tyskland',      n:2,  lat:51.2, lng:10.5, col:'#b7950b'},
+    {name:'Rumänien',      n:1,  lat:45.9, lng:25.0, col:'#7d3c98'},
+    {name:'Österrike',     n:1,  lat:47.5, lng:14.5, col:'#7d3c98'},
+    {name:'Spanien',       n:1,  lat:40.4, lng:-3.7, col:'#7d3c98'},
+    {name:'Bosnien',       n:1,  lat:43.9, lng:17.7, col:'#7d3c98'},
   ];
 
-  // Simple Mercator projection
-  const cx = 20, cy = 52, scale = W * 1.0;
+  // Mercator projection focused on Europe
   function proj(lng, lat) {
-    const x = W/2 + (lng-cx) * (scale/360) * (Math.PI/180) * (180/Math.PI);
-    const latRad = lat * Math.PI/180;
-    const mercN = Math.log(Math.tan(Math.PI/4 + latRad/2));
-    const y = H/2 - mercN * scale/(2*Math.PI);
-    return {x, y};
+    const cx = 18, cy = 54, sc = 5.8;
+    const x = W/2 + (lng - cx) * sc;
+    const latR = lat * Math.PI / 180;
+    const mercN = Math.log(Math.tan(Math.PI/4 + latR/2));
+    const cyR = cy * Math.PI / 180;
+    const mercCy = Math.log(Math.tan(Math.PI/4 + cyR/2));
+    const y = H/2 - (mercN - mercCy) * sc * (180/Math.PI);
+    return [x, y];
   }
 
-  ctx.fillStyle = '#080a0e';
-  ctx.fillRect(0,0,W,H);
+  // Background
+  const bg = document.createElementNS('http://www.w3.org/2000/svg','rect');
+  bg.setAttribute('width', W); bg.setAttribute('height', H);
+  bg.setAttribute('fill', '#0a0e14'); svg.appendChild(bg);
 
-  // Grid
-  ctx.strokeStyle = 'rgba(52,152,219,0.15)'; ctx.lineWidth = 0.5;
-  for (let lon=-20; lon<=65; lon+=10) {
-    ctx.beginPath();
-    for (let lat=25; lat<=73; lat+=2) {
-      const p = proj(lon,lat);
-      lat===25 ? ctx.moveTo(p.x,p.y) : ctx.lineTo(p.x,p.y);
-    }
-    ctx.stroke();
+  // Grid lines
+  const grid = document.createElementNS('http://www.w3.org/2000/svg','g');
+  grid.setAttribute('opacity','0.18');
+  for (let lon = -20; lon <= 65; lon += 10) {
+    const pts = [];
+    for (let lat = 25; lat <= 73; lat += 1) { const p = proj(lon, lat); pts.push(p[0]+','+p[1]); }
+    const line = document.createElementNS('http://www.w3.org/2000/svg','polyline');
+    line.setAttribute('points', pts.join(' '));
+    line.setAttribute('fill','none'); line.setAttribute('stroke','#3498db'); line.setAttribute('stroke-width','0.4');
+    grid.appendChild(line);
   }
-  for (let lat=25; lat<=73; lat+=10) {
-    ctx.beginPath();
-    for (let lon=-25; lon<=70; lon+=2) {
-      const p = proj(lon,lat);
-      lon===-25 ? ctx.moveTo(p.x,p.y) : ctx.lineTo(p.x,p.y);
-    }
-    ctx.stroke();
+  for (let lat = 30; lat <= 72; lat += 10) {
+    const pts = [];
+    for (let lon = -25; lon <= 65; lon += 1) { const p = proj(lon, lat); pts.push(p[0]+','+p[1]); }
+    const line = document.createElementNS('http://www.w3.org/2000/svg','polyline');
+    line.setAttribute('points', pts.join(' '));
+    line.setAttribute('fill','none'); line.setAttribute('stroke','#3498db'); line.setAttribute('stroke-width','0.4');
+    grid.appendChild(line);
   }
+  svg.appendChild(grid);
 
-  const maxN = 28;
-  function rScale(n) { return 5 + Math.sqrt(n/maxN) * 20; }
+  // Simplified land polygons for Europe (key countries)
+  const lands = [
+    // Norway+Sweden rough outline
+    [[5,58],[8,58],[8,62],[10,63],[13,65],[16,68],[18,70],[20,70],[25,70],[28,71],[30,70],[28,69],[26,67],[24,65],[22,63],[20,60],[18,59],[16,56],[14,55],[12,56],[10,57],[8,58]],
+    // Finland
+    [[20,60],[25,60],[28,61],[30,62],[30,65],[28,66],[27,68],[26,70],[24,70],[22,68],[21,65],[20,63],[20,60]],
+    // UK main
+    [[-5,50],[-3,50],[2,51],[2,52],[1,54],[-1,55],[-2,57],[-4,58],[-5,57],[-4,55],[-3,53],[-4,51],[-5,50]],
+    // Ireland
+    [[-10,51],[-6,51],[-6,55],[-8,55],[-10,54],[-10,51]],
+    // France
+    [[-5,43],[3,43],[7,44],[8,48],[5,49],[2,51],[-2,49],[-5,48],[-5,43]],
+    // Spain+Portugal
+    [[-9,36],[0,36],[3,40],[1,43],[-2,44],[-9,44],[-9,40],[-9,36]],
+    // Germany+Benelux
+    [[6,47],[15,47],[15,55],[8,55],[6,52],[6,47]],
+    // Italy
+    [[7,44],[14,44],[18,40],[16,38],[15,37],[13,38],[12,44],[8,46],[7,44]],
+    // Poland
+    [[14,49],[24,49],[24,55],[14,55],[14,49]],
+    // Czech+Slovakia+Austria+Hungary
+    [[9,46],[23,46],[23,50],[9,50],[9,46]],
+    // Balkans rough
+    [[13,41],[25,41],[27,44],[22,46],[18,46],[15,43],[13,41]],
+    // Romania+Moldova
+    [[22,44],[32,44],[32,48],[22,48],[22,44]],
+    // Ukraine
+    [[22,44],[40,44],[40,52],[22,52],[22,44]],
+    // Belarus+Baltic states
+    [[21,54],[32,54],[32,58],[27,60],[21,58],[21,54]],
+    // Russia (Europe part, simplified)
+    [[28,55],[60,55],[65,60],[60,68],[40,70],[28,68],[22,62],[28,58],[28,55]],
+    // Turkey (west)
+    [[26,36],[37,36],[37,42],[26,42],[26,36]],
+    // Greece
+    [[20,36],[27,36],[27,41],[20,41],[20,36]],
+    // Denmark
+    [[8,54],[13,54],[13,56],[10,58],[8,56],[8,54]],
+    // Switzerland
+    [[6,46],[10,46],[10,48],[6,48],[6,46]],
+    // North Africa visible strip
+    [[-6,30],[37,30],[37,36],[-6,36],[-6,30]],
+  ];
+
+  const landG = document.createElementNS('http://www.w3.org/2000/svg','g');
+  lands.forEach(poly => {
+    const pts = poly.map(([lng,lat]) => { const p = proj(lng,lat); return p[0]+','+p[1]; }).join(' ');
+    const el = document.createElementNS('http://www.w3.org/2000/svg','polygon');
+    el.setAttribute('points', pts);
+    el.setAttribute('fill','#16202e');
+    el.setAttribute('stroke','#253040');
+    el.setAttribute('stroke-width','0.8');
+    landG.appendChild(el);
+  });
+  svg.appendChild(landG);
 
   // Bubbles
+  const maxN = 28;
+  function rScale(n) { return 5 + Math.sqrt(n / maxN) * 22; }
+
+  const tip = document.getElementById('tt');
+
   nats.forEach(nat => {
-    const p = proj(nat.lng, nat.lat);
-    if (p.x < -20 || p.x > W+20 || p.y < -20 || p.y > H+20) return;
+    const [x, y] = proj(nat.lng, nat.lat);
+    if (x < -30 || x > W+30 || y < -30 || y > H+30) return;
     const r = rScale(nat.n);
-    ctx.beginPath(); ctx.arc(p.x, p.y, r, 0, Math.PI*2);
-    ctx.fillStyle = 'rgba(192,57,43,0.18)'; ctx.fill();
-    ctx.strokeStyle = '#c0392b'; ctx.lineWidth = 1.5; ctx.stroke();
+    const g = document.createElementNS('http://www.w3.org/2000/svg','g');
+    g.setAttribute('cursor','default');
+
+    const circle = document.createElementNS('http://www.w3.org/2000/svg','circle');
+    circle.setAttribute('cx', x); circle.setAttribute('cy', y); circle.setAttribute('r', r);
+    circle.setAttribute('fill', nat.col + '30');
+    circle.setAttribute('stroke', nat.col);
+    circle.setAttribute('stroke-width', '1.5');
+    g.appendChild(circle);
+
     if (nat.n >= 4) {
-      ctx.fillStyle = '#e8f0ff';
-      ctx.font = `bold ${nat.n>=10?10:9}px ui-monospace,monospace`;
-      ctx.textAlign = 'center'; ctx.textBaseline = 'middle';
-      ctx.fillText(nat.n, p.x, p.y);
+      const txt = document.createElementNS('http://www.w3.org/2000/svg','text');
+      txt.setAttribute('x', x); txt.setAttribute('y', y + 4);
+      txt.setAttribute('text-anchor','middle');
+      txt.setAttribute('font-family','ui-monospace,monospace');
+      txt.setAttribute('font-size', nat.n >= 10 ? '11' : '9');
+      txt.setAttribute('font-weight','700');
+      txt.setAttribute('fill','#ffffff');
+      txt.textContent = nat.n;
+      g.appendChild(txt);
     }
+
     if (nat.n >= 6) {
-      ctx.fillStyle = '#4a5a6e';
-      ctx.font = '7px ui-monospace,monospace';
-      ctx.textAlign = 'center'; ctx.textBaseline = 'top';
-      ctx.fillText(nat.name, p.x, p.y + r + 3);
+      const lbl = document.createElementNS('http://www.w3.org/2000/svg','text');
+      lbl.setAttribute('x', x); lbl.setAttribute('y', y + r + 12);
+      lbl.setAttribute('text-anchor','middle');
+      lbl.setAttribute('font-family','ui-monospace,monospace');
+      lbl.setAttribute('font-size','8');
+      lbl.setAttribute('fill','#9ab8d0');
+      lbl.textContent = nat.name;
+      g.appendChild(lbl);
     }
+
+    g.addEventListener('mouseover', (e) => {
+      showTT(e.clientX, e.clientY, nat.name + '<br>n = ' + nat.n + ' agenter<br>' + (nat.n/136*100).toFixed(1) + '% av total');
+    });
+    g.addEventListener('mousemove', moveTooltip);
+    g.addEventListener('mouseleave', hideTT);
+
+    svg.appendChild(g);
   });
 
-  // Hover
-  canvas.onmousemove = (e) => {
-    const rect = canvas.getBoundingClientRect();
-    const mx = (e.clientX-rect.left)*(W/rect.width);
-    const my = (e.clientY-rect.top)*(H/rect.height);
-    let hit = false;
-    nats.forEach(nat => {
-      const p = proj(nat.lng, nat.lat);
-      const r = rScale(nat.n);
-      if (Math.sqrt((mx-p.x)**2+(my-p.y)**2) < r+4) {
-        showTT(e.clientX, e.clientY, nat.name+'<br>n = '+nat.n+' agenter<br>'+(nat.n/136*100).toFixed(1)+'% av total');
-        hit = true;
-      }
-    });
-    if (!hit) hideTT();
-  };
-  canvas.onmouseleave = hideTT;
+  // Scale legend
+  const legG = document.createElementNS('http://www.w3.org/2000/svg','g');
+  legG.setAttribute('transform',`translate(20, ${H-50})`);
+  [[5,'1'],[12,'10'],[20,'28']].forEach(([r,lbl],i) => {
+    const cx2 = i*55 + r;
+    const c = document.createElementNS('http://www.w3.org/2000/svg','circle');
+    c.setAttribute('cx',cx2); c.setAttribute('cy',0); c.setAttribute('r',r);
+    c.setAttribute('fill','rgba(192,57,43,0.15)'); c.setAttribute('stroke','#c0392b'); c.setAttribute('stroke-width','1');
+    legG.appendChild(c);
+    const t = document.createElementNS('http://www.w3.org/2000/svg','text');
+    t.setAttribute('x',cx2); t.setAttribute('y', r+13);
+    t.setAttribute('text-anchor','middle');
+    t.setAttribute('font-family','ui-monospace,monospace'); t.setAttribute('font-size','8'); t.setAttribute('fill','#9ab8d0');
+    t.textContent = 'n='+lbl;
+    legG.appendChild(t);
+  });
+  svg.appendChild(legG);
 }
 
 // ── NAT LIST ──
@@ -659,7 +749,7 @@ function drawNatList() {
     {name:'Serbien',n:5,col:'#7f8c8d'},{name:'Colombia',n:4,col:'#7f8c8d'},
   ];
   document.getElementById('natList').innerHTML = nats.map(d =>
-    `<div class="nat-item" style="border-left-color:${d.col}"><div><div class="nat-name">${d.name}</div><div style="font-size:9px;color:var(--text-dim);font-family:var(--mono)">${(d.n/136*100).toFixed(1)}%</div></div><div class="nat-n">${d.n}</div></div>`
+    `<div class="nat-item" style="border-left-color:${d.col}"><div><div class="nat-name">${d.name}</div><div style="font-size:9px;color:#c8d8ec;font-family:var(--mono)">${(d.n/136*100).toFixed(1)}%</div></div><div class="nat-n">${d.n}</div></div>`
   ).join('');
 }
 
@@ -692,7 +782,7 @@ function drawMatrix() {
   }
 
   // Column headers
-  ctx.fillStyle = '#c8d6e8'; ctx.font = '10px ui-monospace,monospace'; ctx.textAlign = 'center'; ctx.textBaseline = 'middle';
+  ctx.fillStyle = '#e0eaf8'; ctx.font = '10px ui-monospace,monospace'; ctx.textAlign = 'center'; ctx.textBaseline = 'middle';
   roles.forEach((r,i) => ctx.fillText(r, m.l + i*cw + cw/2, 14));
 
   // Row headers
@@ -747,7 +837,6 @@ window.addEventListener('load', initAll);
 window.addEventListener('resize', () => {
   drawYOB();
   drawNetwork();
-  drawMap();
   drawMatrix();
 });
 </script>
