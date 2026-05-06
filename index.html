@@ -3,110 +3,123 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Rysslands lågtröskelagenter i Europa 2022-2025</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;600&family=IBM+Plex+Sans:ital,wght@0,300;0,400;0,600;1,300&display=swap" rel="stylesheet">
-<script src="https://cdnjs.cloudflare.com/ajax/libs/d3/7.8.5/d3.min.js"><\/script>
+<title>Rysslands lagtröskelagenter i Europa 2022-2025</title>
 <style>
-:root{--bg:#080a0e;--surface:#0d1117;--panel:#111520;--border:#1c2333;--red:#c0392b;--orange:#d35400;--purple:#7d3c98;--green:#1e8449;--blue:#1a5276;--gold:#b7950b;--text:#c8d6e8;--text-dim:#4a5a6e;--text-bright:#e8f0ff;--text-muted:#6a7a8e;--mono:'IBM Plex Mono',monospace;--sans:'IBM Plex Sans',sans-serif}
+:root{
+  --bg:#080a0e;--surface:#0d1117;--panel:#111520;--border:#1c2333;
+  --red:#c0392b;--orange:#d35400;--purple:#7d3c98;--green:#1e8449;
+  --blue:#1a5276;--gold:#b7950b;
+  --text:#c8d6e8;--text-dim:#4a5a6e;--text-bright:#e8f0ff;--text-muted:#6a7a8e;
+  --mono:ui-monospace,'Cascadia Code','Courier New',monospace;
+  --sans:-apple-system,BlinkMacSystemFont,'Segoe UI',system-ui,sans-serif;
+}
 *{box-sizing:border-box;margin:0;padding:0}
 html{scroll-behavior:smooth}
 body{background:var(--bg);color:var(--text);font-family:var(--sans);font-weight:300;line-height:1.6;overflow-x:hidden}
-nav{position:fixed;top:0;left:0;right:0;z-index:1000;background:rgba(8,10,14,.95);backdrop-filter:blur(8px);border-bottom:1px solid var(--border);display:flex;align-items:center;justify-content:space-between;padding:0 32px;height:52px}
-.nav-brand{font-family:var(--mono);font-size:11px;font-weight:600;color:var(--red);letter-spacing:.15em;text-transform:uppercase}
+
+nav{position:fixed;top:0;left:0;right:0;z-index:1000;background:rgba(8,10,14,.97);border-bottom:1px solid var(--border);display:flex;align-items:center;justify-content:space-between;padding:0 28px;height:50px}
+.nav-brand{font-family:var(--mono);font-size:11px;font-weight:600;color:var(--red);letter-spacing:.12em;text-transform:uppercase}
 .nav-links{display:flex;gap:2px}
-.nav-link{font-family:var(--mono);font-size:9px;text-transform:uppercase;letter-spacing:.1em;color:var(--text-dim);text-decoration:none;padding:6px 12px;border-radius:2px;transition:all .15s;cursor:pointer;border:none;background:none}
+.nav-link{font-family:var(--mono);font-size:9px;text-transform:uppercase;letter-spacing:.08em;color:var(--text-dim);text-decoration:none;padding:5px 10px;border-radius:2px;transition:all .15s}
 .nav-link:hover{color:var(--text);background:var(--panel)}
-.nav-link.active{color:var(--text-bright);background:var(--panel);border:1px solid var(--border)}
-.hero{min-height:100vh;display:flex;flex-direction:column;justify-content:center;padding:80px 64px 60px;position:relative;border-bottom:1px solid var(--border);overflow:hidden}
-.hero::before{content:'';position:absolute;top:0;left:0;right:0;bottom:0;background:radial-gradient(ellipse 60% 50% at 80% 50%,rgba(192,57,43,.04) 0%,transparent 70%),radial-gradient(ellipse 40% 40% at 20% 80%,rgba(125,60,152,.03) 0%,transparent 60%);pointer-events:none}
-.hero-eyebrow{font-family:var(--mono);font-size:10px;color:var(--red);letter-spacing:.2em;text-transform:uppercase;margin-bottom:28px;display:flex;align-items:center;gap:12px}
-.hero-eyebrow::before{content:'';display:block;width:32px;height:1px;background:var(--red)}
-.hero h1{font-family:var(--sans);font-size:clamp(32px,5vw,62px);font-weight:600;color:var(--text-bright);line-height:1.1;letter-spacing:-.02em;max-width:800px;margin-bottom:28px}
+
+.hero{min-height:100vh;display:flex;flex-direction:column;justify-content:center;padding:80px 56px 60px;border-bottom:1px solid var(--border)}
+.eyebrow{font-family:var(--mono);font-size:10px;color:var(--red);letter-spacing:.18em;text-transform:uppercase;margin-bottom:24px;display:flex;align-items:center;gap:12px}
+.eyebrow::before{content:'';display:block;width:28px;height:1px;background:var(--red)}
+.hero h1{font-size:clamp(30px,5vw,58px);font-weight:600;color:var(--text-bright);line-height:1.1;letter-spacing:-.02em;max-width:780px;margin-bottom:24px}
 .hero h1 em{font-style:italic;font-weight:300;color:var(--text-muted)}
-.hero-lead{font-size:16px;font-weight:300;color:var(--text-muted);max-width:620px;line-height:1.8;margin-bottom:40px}
-.hero-stats{display:flex;gap:0;border:1px solid var(--border);border-radius:3px;overflow:hidden;width:fit-content;margin-bottom:40px;flex-wrap:wrap}
-.hero-stat{padding:18px 28px;border-right:1px solid var(--border);text-align:center}
-.hero-stat:last-child{border-right:none}
-.hero-stat-num{font-family:var(--mono);font-size:28px;font-weight:600;color:var(--text-bright);display:block;line-height:1}
-.hero-stat-label{font-size:9px;color:var(--text-dim);text-transform:uppercase;letter-spacing:.12em;margin-top:6px;display:block}
-.hero-source{font-family:var(--mono);font-size:9px;color:var(--text-dim);line-height:1.8;padding:12px 16px;border:1px solid var(--border);border-radius:2px;width:fit-content;background:var(--surface)}
-.hero-source strong{color:var(--text-muted)}
-section{padding:80px 64px;border-bottom:1px solid var(--border);position:relative}
-.section-number{font-family:var(--mono);font-size:9px;color:var(--red);letter-spacing:.2em;text-transform:uppercase;margin-bottom:8px}
-.section-title{font-size:clamp(22px,3vw,34px);font-weight:600;color:var(--text-bright);letter-spacing:-.02em;margin-bottom:12px;line-height:1.2}
-.section-desc{font-size:14px;color:var(--text-muted);max-width:640px;line-height:1.8;margin-bottom:48px}
-.profile-grid{display:grid;grid-template-columns:1fr 1fr;gap:24px}
-.profile-panel{background:var(--surface);border:1px solid var(--border);border-radius:3px;padding:24px}
-.profile-panel h3{font-family:var(--mono);font-size:10px;text-transform:uppercase;letter-spacing:.14em;color:var(--text-dim);margin-bottom:20px;padding-bottom:10px;border-bottom:1px solid var(--border)}
-.big-metrics{display:grid;grid-template-columns:repeat(2,1fr);gap:12px}
-.big-metric{text-align:center;padding:18px 12px;background:var(--bg);border:1px solid var(--border);border-radius:3px;position:relative;overflow:hidden}
-.big-metric::before{content:'';position:absolute;top:0;left:0;right:0;height:2px}
-.big-metric.red::before{background:var(--red)}.big-metric.orange::before{background:var(--orange)}.big-metric.purple::before{background:var(--purple)}.big-metric.green::before{background:var(--green)}.big-metric.blue::before{background:var(--blue)}.big-metric.gold::before{background:var(--gold)}
-.big-metric-num{font-family:var(--mono);font-size:32px;font-weight:600;color:var(--text-bright);display:block;line-height:1;margin-bottom:6px}
-.big-metric-label{font-size:10px;color:var(--text-dim);text-transform:uppercase;letter-spacing:.1em}
-.big-metric-sub{font-family:var(--mono);font-size:8px;color:var(--text-dim);margin-top:4px;display:block}
-.stacked-bar{display:flex;height:28px;border-radius:2px;overflow:hidden;margin-bottom:12px}
-.stacked-segment{display:flex;align-items:center;justify-content:center;font-family:var(--mono);font-size:8px;color:rgba(255,255,255,.7);min-width:20px}
-.stacked-legend{display:flex;flex-wrap:wrap;gap:10px;margin-top:8px}
-.stacked-legend-item{display:flex;align-items:center;gap:5px;font-size:10px;color:var(--text-muted)}
-.legend-swatch{width:10px;height:10px;border-radius:1px;flex-shrink:0}
-.hbar{display:flex;align-items:center;gap:10px;margin-bottom:10px}
-.hbar-label{font-family:var(--mono);font-size:10px;color:var(--text);width:110px;flex-shrink:0}
-.hbar-track{flex:1;height:16px;background:var(--bg);border-radius:2px;overflow:hidden}
-.hbar-fill{height:100%;border-radius:2px;display:flex;align-items:center;padding-left:8px}
-.hbar-fill span{font-family:var(--mono);font-size:8px;color:rgba(255,255,255,.6);white-space:nowrap}
-.hbar-count{font-family:var(--mono);font-size:10px;color:var(--text-dim);width:40px;text-align:right}
-.yob-container{background:var(--surface);border:1px solid var(--border);border-radius:3px;padding:24px}
-.yob-container h3{font-family:var(--mono);font-size:10px;text-transform:uppercase;letter-spacing:.14em;color:var(--text-dim);margin-bottom:6px}
-.yob-subtitle{font-size:12px;color:var(--text-muted);margin-bottom:24px}
-.network-layout{display:grid;grid-template-columns:1fr 300px;gap:24px;align-items:start}
-.net-legend-block{background:var(--bg);border:1px solid var(--border);border-radius:3px;padding:16px;margin-bottom:12px}
-.net-legend-block h4{font-family:var(--mono);font-size:9px;text-transform:uppercase;letter-spacing:.14em;color:var(--text-dim);margin-bottom:12px}
-.net-legend-item{display:flex;align-items:center;gap:8px;margin-bottom:8px;font-size:11px;color:var(--text-muted)}
-.net-dot{border-radius:50%;flex-shrink:0}
-.net-edge-item{display:flex;align-items:center;gap:8px;margin-bottom:6px;font-size:10px;color:var(--text-muted)}
-.net-edge-line{width:24px;height:1px}
-.cent-row{display:flex;align-items:center;gap:8px;margin-bottom:6px}
-.cent-label{font-family:var(--mono);font-size:9px;color:var(--text-muted);width:90px;flex-shrink:0}
-.cent-track{flex:1;height:6px;background:var(--border);border-radius:3px;overflow:hidden}
-.cent-fill{height:100%;border-radius:3px}
-.cent-val{font-family:var(--mono);font-size:8px;color:var(--text-dim);width:36px;text-align:right}
-.map-layout{display:grid;grid-template-columns:1fr 300px;gap:24px;align-items:start}
-.nat-rank-item{display:flex;align-items:center;justify-content:space-between;padding:8px 12px;background:var(--surface);border:1px solid var(--border);border-radius:2px;margin-bottom:4px;border-left-width:3px}
-.nat-rank-name{font-size:11px;color:var(--text)}
-.nat-rank-n{font-family:var(--mono);font-size:12px;font-weight:600;color:var(--text-bright)}
-.matrix-container{background:var(--surface);border:1px solid var(--border);border-radius:3px;padding:24px;overflow-x:auto}
-.matrix-finding{margin-top:24px;display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
-.mf-card{background:var(--bg);border:1px solid var(--border);border-radius:3px;padding:16px}
-.mf-card-num{font-family:var(--mono);font-size:28px;font-weight:600;color:var(--text-bright);display:block;margin-bottom:4px}
-.mf-card-label{font-size:11px;color:var(--text-muted);line-height:1.5}
-.platform-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-bottom:24px}
-.plat-card{background:var(--surface);border:1px solid var(--border);border-radius:3px;padding:20px;text-align:center}
-.plat-icon{font-size:28px;margin-bottom:10px;display:block}
-.plat-name{font-family:var(--mono);font-size:10px;text-transform:uppercase;letter-spacing:.1em;color:var(--text-dim);margin-bottom:8px}
-.plat-num{font-family:var(--mono);font-size:24px;font-weight:600;color:var(--text-bright);display:block}
-.plat-pct{font-size:11px;color:var(--text-muted);margin-top:4px;display:block}
-.insight-box{background:var(--surface);border:1px solid var(--border);border-left:3px solid var(--red);border-radius:2px;padding:16px 20px;margin-top:24px}
-.insight-box.orange{border-left-color:var(--orange)}.insight-box.purple{border-left-color:var(--purple)}.insight-box.green{border-left-color:var(--green)}.insight-box.blue{border-left-color:var(--blue)}
-.insight-label{font-family:var(--mono);font-size:8px;text-transform:uppercase;letter-spacing:.15em;color:var(--red);margin-bottom:6px}
-.insight-box.orange .insight-label{color:var(--orange)}.insight-box.purple .insight-label{color:var(--purple)}.insight-box.green .insight-label{color:var(--green)}.insight-box.blue .insight-label{color:var(--blue)}
-.insight-text{font-size:13px;color:var(--text);line-height:1.7}
-footer{padding:48px 64px;background:var(--surface);border-top:1px solid var(--border)}
-.footer-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:32px}
-.footer-col h4{font-family:var(--mono);font-size:9px;text-transform:uppercase;letter-spacing:.14em;color:var(--text-dim);margin-bottom:12px}
-.footer-col p,.footer-col li{font-size:11px;color:var(--text-muted);line-height:1.8;list-style:none}
-.reveal{opacity:0;transform:translateY(16px);transition:opacity .6s ease,transform .6s ease}
-.reveal.visible{opacity:1;transform:translateY(0)}
-::-webkit-scrollbar{width:4px}::-webkit-scrollbar-track{background:transparent}::-webkit-scrollbar-thumb{background:var(--border);border-radius:2px}
-.tooltip{position:fixed;background:var(--panel);border:1px solid var(--border);border-radius:3px;padding:8px 12px;font-family:var(--mono);font-size:10px;color:var(--text-bright);pointer-events:none;z-index:9999;opacity:0;transition:opacity .15s;max-width:200px;line-height:1.6}
-@media(max-width:900px){section{padding:48px 24px}.hero{padding:80px 24px 48px}.profile-grid,.network-layout,.map-layout{grid-template-columns:1fr}.platform-grid{grid-template-columns:1fr 1fr}.matrix-finding{grid-template-columns:1fr}.footer-grid{grid-template-columns:1fr}nav{padding:0 16px}.nav-links{display:none}}
+.lead{font-size:15px;color:var(--text-muted);max-width:600px;line-height:1.8;margin-bottom:36px}
+.hero-stats{display:flex;border:1px solid var(--border);border-radius:3px;overflow:hidden;width:fit-content;margin-bottom:32px;flex-wrap:wrap}
+.hstat{padding:16px 24px;border-right:1px solid var(--border);text-align:center}
+.hstat:last-child{border-right:none}
+.hstat-num{font-family:var(--mono);font-size:26px;font-weight:600;color:var(--text-bright);display:block;line-height:1}
+.hstat-lbl{font-size:9px;color:var(--text-dim);text-transform:uppercase;letter-spacing:.1em;margin-top:5px;display:block}
+.source-box{font-family:var(--mono);font-size:9px;color:var(--text-dim);line-height:1.8;padding:11px 14px;border:1px solid var(--border);border-radius:2px;background:var(--surface);width:fit-content}
+
+section{padding:72px 56px;border-bottom:1px solid var(--border)}
+.sec-num{font-family:var(--mono);font-size:9px;color:var(--red);letter-spacing:.18em;text-transform:uppercase;margin-bottom:6px}
+.sec-title{font-size:clamp(20px,3vw,32px);font-weight:600;color:var(--text-bright);letter-spacing:-.02em;margin-bottom:10px;line-height:1.2}
+.sec-desc{font-size:13px;color:var(--text-muted);max-width:620px;line-height:1.8;margin-bottom:40px}
+
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:20px}
+.panel{background:var(--surface);border:1px solid var(--border);border-radius:3px;padding:22px}
+.panel h3{font-family:var(--mono);font-size:9px;text-transform:uppercase;letter-spacing:.14em;color:var(--text-dim);margin-bottom:18px;padding-bottom:9px;border-bottom:1px solid var(--border)}
+
+.kpi-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.kpi{text-align:center;padding:16px 10px;background:var(--bg);border:1px solid var(--border);border-radius:3px;position:relative;overflow:hidden}
+.kpi::before{content:'';position:absolute;top:0;left:0;right:0;height:2px}
+.kpi.r::before{background:var(--red)}.kpi.o::before{background:var(--orange)}.kpi.p::before{background:var(--purple)}.kpi.g::before{background:var(--green)}.kpi.b::before{background:var(--blue)}.kpi.gl::before{background:var(--gold)}
+.kpi-num{font-family:var(--mono);font-size:30px;font-weight:600;color:var(--text-bright);display:block;line-height:1;margin-bottom:5px}
+.kpi-lbl{font-size:9px;color:var(--text-dim);text-transform:uppercase;letter-spacing:.09em}
+.kpi-sub{font-family:var(--mono);font-size:8px;color:var(--text-dim);margin-top:3px;display:block}
+
+.stack-bar{display:flex;height:26px;border-radius:2px;overflow:hidden;margin-bottom:10px}
+.seg{display:flex;align-items:center;justify-content:center;font-family:var(--mono);font-size:8px;color:rgba(255,255,255,.7);min-width:18px;transition:opacity .2s;cursor:default}
+.seg:hover{opacity:.8}
+.sleg{display:flex;flex-wrap:wrap;gap:8px;margin-top:6px}
+.sleg-item{display:flex;align-items:center;gap:5px;font-size:10px;color:var(--text-muted)}
+.sw{width:9px;height:9px;border-radius:1px;flex-shrink:0}
+
+.hbar-row{display:flex;align-items:center;gap:8px;margin-bottom:9px}
+.hbar-lbl{font-family:var(--mono);font-size:10px;color:var(--text);width:100px;flex-shrink:0}
+.hbar-track{flex:1;height:15px;background:var(--bg);border-radius:2px;overflow:hidden}
+.hbar-fill{height:100%;border-radius:2px;display:flex;align-items:center;padding-left:6px}
+.hbar-fill span{font-family:var(--mono);font-size:8px;color:rgba(255,255,255,.55);white-space:nowrap}
+.hbar-n{font-family:var(--mono);font-size:10px;color:var(--text-dim);width:36px;text-align:right}
+
+canvas{display:block;width:100%}
+
+.insight{background:var(--surface);border:1px solid var(--border);border-left:3px solid var(--red);border-radius:2px;padding:14px 18px;margin-top:20px}
+.insight.o{border-left-color:var(--orange)}.insight.p{border-left-color:var(--purple)}.insight.g{border-left-color:var(--green)}.insight.b{border-left-color:var(--blue)}
+.insight-lbl{font-family:var(--mono);font-size:8px;text-transform:uppercase;letter-spacing:.14em;color:var(--red);margin-bottom:5px}
+.insight.o .insight-lbl{color:var(--orange)}.insight.p .insight-lbl{color:var(--purple)}.insight.g .insight-lbl{color:var(--green)}.insight.b .insight-lbl{color:var(--blue)}
+.insight-txt{font-size:13px;color:var(--text);line-height:1.7}
+
+.net-layout{display:grid;grid-template-columns:1fr 280px;gap:20px;align-items:start}
+.net-block{background:var(--bg);border:1px solid var(--border);border-radius:3px;padding:14px;margin-bottom:10px}
+.net-block h4{font-family:var(--mono);font-size:9px;text-transform:uppercase;letter-spacing:.12em;color:var(--text-dim);margin-bottom:10px}
+.nleg-item{display:flex;align-items:center;gap:7px;margin-bottom:7px;font-size:11px;color:var(--text-muted)}
+.ndot{border-radius:50%;flex-shrink:0;border:2px solid}
+
+.map-layout{display:grid;grid-template-columns:1fr 280px;gap:20px;align-items:start}
+.nat-item{display:flex;align-items:center;justify-content:space-between;padding:7px 11px;background:var(--surface);border:1px solid var(--border);border-radius:2px;margin-bottom:3px;border-left-width:3px}
+.nat-name{font-size:11px;color:var(--text)}
+.nat-n{font-family:var(--mono);font-size:12px;font-weight:600;color:var(--text-bright)}
+
+.plat-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-bottom:20px}
+.plat-card{background:var(--surface);border:1px solid var(--border);border-radius:3px;padding:18px;text-align:center}
+.plat-icon{font-size:24px;margin-bottom:8px;display:block}
+.plat-name{font-family:var(--mono);font-size:9px;text-transform:uppercase;letter-spacing:.09em;color:var(--text-dim);margin-bottom:6px}
+.plat-num{font-family:var(--mono);font-size:22px;font-weight:600;color:var(--text-bright);display:block}
+.plat-sub{font-size:10px;color:var(--text-muted);margin-top:3px;display:block}
+
+.mf-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:20px}
+.mf-card{background:var(--bg);border:1px solid var(--border);border-radius:3px;padding:14px}
+.mf-num{font-family:var(--mono);font-size:26px;font-weight:600;display:block;margin-bottom:3px}
+.mf-lbl{font-size:11px;color:var(--text-muted);line-height:1.5}
+
+footer{padding:40px 56px;background:var(--surface);border-top:1px solid var(--border)}
+.foot-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:28px}
+.foot-col h4{font-family:var(--mono);font-size:9px;text-transform:uppercase;letter-spacing:.12em;color:var(--text-dim);margin-bottom:10px}
+.foot-col p,.foot-col li{font-size:11px;color:var(--text-muted);line-height:1.8;list-style:none}
+
+.tooltip{position:fixed;background:var(--panel);border:1px solid var(--border);border-radius:3px;padding:7px 11px;font-family:var(--mono);font-size:10px;color:var(--text-bright);pointer-events:none;z-index:9999;display:none;line-height:1.5;max-width:180px}
+
+@media(max-width:860px){
+  section,.hero{padding:48px 20px}
+  .grid2,.net-layout,.map-layout,.foot-grid{grid-template-columns:1fr}
+  .plat-grid,.mf-grid{grid-template-columns:1fr 1fr}
+  nav{padding:0 14px}.nav-links{display:none}
+  .hero-stats{flex-direction:column}
+  .hstat{border-right:none;border-bottom:1px solid var(--border)}
+}
 </style>
 </head>
 <body>
-<div class="tooltip" id="tooltip"></div>
+<div class="tooltip" id="tt"></div>
+
 <nav>
-  <div class="nav-brand">GRU/FSB — Lagtröskelagenter i Europa</div>
+  <div class="nav-brand">GRU/FSB &mdash; Lagtröskelagenter i Europa</div>
   <div class="nav-links">
     <a class="nav-link" href="#profil">Profil</a>
     <a class="nav-link" href="#natverk">Nätverk</a>
@@ -117,439 +130,626 @@ footer{padding:48px 64px;background:var(--surface);border-top:1px solid var(--bo
 </nav>
 
 <section class="hero" id="hero">
-  <div class="hero-eyebrow">Analytisk rapport · Leiden University · 2022–2025</div>
+  <div class="eyebrow">Analytisk rapport &middot; Leiden University &middot; 2022&ndash;2025</div>
   <h1>Rysslands <em>lågtröskelagenter</em><br>i Europa</h1>
-  <p class="hero-lead">
-    Sedan den fullskaliga invasionen av Ukraina 2022 har rysk underrättelsetjänst rekryterat hundratals europeiska medborgare för att utföra sabotage, spionage och störningsoperationer. Det handlar inte om sofistikerade spioner — det handlar om betalda budbärare, eldstiftare och vandaler rekryterade via Telegram för summor motsvarande några hundra euro.
-  </p>
+  <p class="lead">Sedan den fullskaliga invasionen av Ukraina 2022 har rysk underrättelsetjänst rekryterat hundratals europeiska medborgare för sabotage, spionage och störningsoperationer. Inte sofistikerade spioner — utan betalda budbärare, eldstiftare och vandaler rekryterade via Telegram för summor motsvarande några hundra euro.</p>
   <div class="hero-stats">
-    <div class="hero-stat"><span class="hero-stat-num">145</span><span class="hero-stat-label">Individer i dataset</span></div>
-    <div class="hero-stat"><span class="hero-stat-num">23</span><span class="hero-stat-label">Nationaliteter</span></div>
-    <div class="hero-stat"><span class="hero-stat-num">~63%</span><span class="hero-stat-label">Motiverade av pengar</span></div>
-    <div class="hero-stat"><span class="hero-stat-num">1995</span><span class="hero-stat-label">Medianfödelseår</span></div>
-    <div class="hero-stat"><span class="hero-stat-num">~29%</span><span class="hero-stat-label">Visste om ryskt uppdrag</span></div>
+    <div class="hstat"><span class="hstat-num">145</span><span class="hstat-lbl">Individer i dataset</span></div>
+    <div class="hstat"><span class="hstat-num">23</span><span class="hstat-lbl">Nationaliteter</span></div>
+    <div class="hstat"><span class="hstat-num">~63%</span><span class="hstat-lbl">Monetärt motiverade</span></div>
+    <div class="hstat"><span class="hstat-num">1995</span><span class="hstat-lbl">Medianfödelseår</span></div>
+    <div class="hstat"><span class="hstat-num">~29%</span><span class="hstat-lbl">Visste om ryskt uppdrag</span></div>
   </div>
-  <div class="hero-source">
-    <strong>Källa:</strong> Schuurman, B. (2026). <em>Russia's Low-Level Agents in Europe, 2022–2025.</em><br>
-    Professor i terrorismforskning, Leiden University · Dataset v. 2026-04-13 · Fullständigt anonymiserat<br>
+  <div class="source-box">
+    <strong>Källa:</strong> Schuurman, B. (2026). Russia's Low-Level Agents in Europe, 2022&ndash;2025.<br>
+    Professor i terrorismforskning, Leiden University &middot; Dataset v.2026-04-13 &middot; Anonymiserat<br>
     <strong>Visualisering:</strong> Svensk OSINT
   </div>
 </section>
 
+<!-- 01 PROFIL -->
 <section id="profil">
-  <div class="section-number">01 — Befolkningsprofil</div>
-  <h2 class="section-title">Vem är den typiske agenten?</h2>
-  <p class="section-desc">Den sammansatta bilden utmanar föreställningen om den tränade underrättelseoperatören. Majoriteten är unga, manliga och motiverade av kontantersättning snarare än ideologisk övertygelse. Många visste inte ens att de jobbade för rysk underrättelsetjänst.</p>
+  <div class="sec-num">01 &mdash; Befolkningsprofil</div>
+  <h2 class="sec-title">Vem är den typiske agenten?</h2>
+  <p class="sec-desc">Den sammansatta bilden utmanar föreställningen om den tränade underrättelseoperatören. Majoriteten är unga, manliga och motiverade av kontantersättning snarare än ideologisk övertygelse. Många visste inte att de jobbade för rysk underrättelsetjänst.</p>
 
-  <div class="profile-grid reveal">
-    <div class="profile-panel">
+  <div class="grid2">
+    <div class="panel">
       <h3>Nyckeltal</h3>
-      <div class="big-metrics">
-        <div class="big-metric red"><span class="big-metric-num">91%</span><div class="big-metric-label">Män</div><span class="big-metric-sub">132 av 144 individer</span></div>
-        <div class="big-metric orange"><span class="big-metric-num">1995</span><div class="big-metric-label">Medianfödelseår</div><span class="big-metric-sub">Agenter: median 1995</span></div>
-        <div class="big-metric purple"><span class="big-metric-num">29%</span><div class="big-metric-label">Kände till ryskt uppdrag</div><span class="big-metric-sub">45 av 144 bekräftade</span></div>
-        <div class="big-metric green"><span class="big-metric-num">40%</span><div class="big-metric-label">Talar ryska</div><span class="big-metric-sub">57 bekräftade (ex. okänd)</span></div>
-        <div class="big-metric blue"><span class="big-metric-num">26%</span><div class="big-metric-label">Kriminell historik</div><span class="big-metric-sub">37 bekräftade fall</span></div>
-        <div class="big-metric gold"><span class="big-metric-num">2008</span><div class="big-metric-label">Yngsta agent</div><span class="big-metric-sub">16 år vid rekrytering</span></div>
+      <div class="kpi-grid">
+        <div class="kpi r"><span class="kpi-num">91%</span><div class="kpi-lbl">Män</div><span class="kpi-sub">132 av 144</span></div>
+        <div class="kpi o"><span class="kpi-num">1995</span><div class="kpi-lbl">Medianfödelseår</div><span class="kpi-sub">Agenter: median 1995</span></div>
+        <div class="kpi p"><span class="kpi-num">29%</span><div class="kpi-lbl">Kände till ryskt uppdrag</div><span class="kpi-sub">45 av 144</span></div>
+        <div class="kpi g"><span class="kpi-num">40%</span><div class="kpi-lbl">Talar ryska</div><span class="kpi-sub">57 bekräftade</span></div>
+        <div class="kpi b"><span class="kpi-num">26%</span><div class="kpi-lbl">Kriminell historik</div><span class="kpi-sub">37 bekräftade</span></div>
+        <div class="kpi gl"><span class="kpi-num">2008</span><div class="kpi-lbl">Yngsta agent</div><span class="kpi-sub">16 år vid rekrytering</span></div>
       </div>
     </div>
-    <div class="profile-panel">
+
+    <div class="panel">
       <h3>Rollfördelning (n=144)</h3>
-      <div class="stacked-bar">
-        <div class="stacked-segment" style="width:63.9%;background:#c0392b">Agent 64%</div>
-        <div class="stacked-segment" style="width:16.7%;background:#d35400">H 17%</div>
-        <div class="stacked-segment" style="width:10.4%;background:#7d3c98">I 10%</div>
-        <div class="stacked-segment" style="width:9.0%;background:#1e8449">R 9%</div>
+      <div class="stack-bar">
+        <div class="seg" style="width:63.9%;background:#c0392b" title="Agent: 92">Agent 64%</div>
+        <div class="seg" style="width:16.7%;background:#d35400" title="Handler: 24">H 17%</div>
+        <div class="seg" style="width:10.4%;background:#7d3c98" title="Intermediary: 15">I 10%</div>
+        <div class="seg" style="width:9%;background:#1e8449" title="Rekryterare: 13">R 9%</div>
       </div>
-      <div class="stacked-legend">
-        <div class="stacked-legend-item"><div class="legend-swatch" style="background:#c0392b"></div>Agent (n=92) — utför uppdraget</div>
-        <div class="stacked-legend-item"><div class="legend-swatch" style="background:#d35400"></div>Handler (n=24) — leder agenter</div>
-        <div class="stacked-legend-item"><div class="legend-swatch" style="background:#7d3c98"></div>Intermediary (n=15) — länk handler-agent</div>
-        <div class="stacked-legend-item"><div class="legend-swatch" style="background:#1e8449"></div>Rekryterare (n=13) — bygger agentlager</div>
+      <div class="sleg">
+        <div class="sleg-item"><div class="sw" style="background:#c0392b"></div>Agent (n=92) &mdash; utför uppdraget</div>
+        <div class="sleg-item"><div class="sw" style="background:#d35400"></div>Handler (n=24) &mdash; leder agenter</div>
+        <div class="sleg-item"><div class="sw" style="background:#7d3c98"></div>Intermediary (n=15) &mdash; avskärmning</div>
+        <div class="sleg-item"><div class="sw" style="background:#1e8449"></div>Rekryterare (n=13) &mdash; bygger agentlager</div>
       </div>
-      <div style="margin-top:24px">
-        <h3 style="font-family:var(--mono);font-size:10px;text-transform:uppercase;letter-spacing:.14em;color:var(--text-dim);margin-bottom:16px;padding-bottom:10px;border-bottom:1px solid var(--border)">Medianfödelseår per roll</h3>
-        <div class="hbar"><div class="hbar-label">Rekryterare</div><div class="hbar-track"><div class="hbar-fill" style="width:100%;background:#1e8449"><span>Median 1997 — yngst</span></div></div><div class="hbar-count">n=12</div></div>
-        <div class="hbar"><div class="hbar-label">Agent</div><div class="hbar-track"><div class="hbar-fill" style="width:97%;background:#c0392b"><span>Median 1995</span></div></div><div class="hbar-count">n=73</div></div>
-        <div class="hbar"><div class="hbar-label">Handler</div><div class="hbar-track"><div class="hbar-fill" style="width:87%;background:#d35400"><span>Median 1991</span></div></div><div class="hbar-count">n=20</div></div>
-        <div class="hbar"><div class="hbar-label">Intermediary</div><div class="hbar-track"><div class="hbar-fill" style="width:70%;background:#7d3c98"><span>Median 1978 — äldst</span></div></div><div class="hbar-count">n=12</div></div>
-      </div>
-    </div>
-  </div>
-
-  <div style="margin-top:24px" class="reveal">
-    <div class="yob-container">
-      <h3>Födelseårsfördelning (n=118 med känt födelseår)</h3>
-      <p class="yob-subtitle">Stark koncentration i årgångarna 1997–2008. Intermediaries och Handlers är statistiskt äldre — konsistent med djupare inbäddning i ryska nätverk.</p>
-      <svg id="yobChart" style="width:100%;height:160px"></svg>
-      <div style="display:flex;gap:16px;margin-top:12px;flex-wrap:wrap">
-        <div class="stacked-legend-item"><div class="legend-swatch" style="background:#1a5276"></div>1950–1979 (äldre profil)</div>
-        <div class="stacked-legend-item"><div class="legend-swatch" style="background:#d35400"></div>1980–1999 (mellangeneration)</div>
-        <div class="stacked-legend-item"><div class="legend-swatch" style="background:#c0392b"></div>2000–2008 (ung profil — lägst tröskel)</div>
+      <div style="margin-top:22px">
+        <h3 style="font-family:var(--mono);font-size:9px;text-transform:uppercase;letter-spacing:.12em;color:var(--text-dim);margin-bottom:14px;padding-bottom:8px;border-bottom:1px solid var(--border)">Medianfödelseår per roll</h3>
+        <div class="hbar-row"><div class="hbar-lbl">Rekryterare</div><div class="hbar-track"><div class="hbar-fill" style="width:100%;background:#1e8449"><span>Median 1997 — yngst</span></div></div><div class="hbar-n">n=12</div></div>
+        <div class="hbar-row"><div class="hbar-lbl">Agent</div><div class="hbar-track"><div class="hbar-fill" style="width:97%;background:#c0392b"><span>Median 1995</span></div></div><div class="hbar-n">n=73</div></div>
+        <div class="hbar-row"><div class="hbar-lbl">Handler</div><div class="hbar-track"><div class="hbar-fill" style="width:85%;background:#d35400"><span>Median 1991</span></div></div><div class="hbar-n">n=20</div></div>
+        <div class="hbar-row"><div class="hbar-lbl">Intermediary</div><div class="hbar-track"><div class="hbar-fill" style="width:69%;background:#7d3c98"><span>Median 1978 — äldst</span></div></div><div class="hbar-n">n=12</div></div>
       </div>
     </div>
   </div>
 
-  <div class="insight-box reveal">
-    <div class="insight-label">Analytisk slutsats</div>
-    <div class="insight-text">Agentprofilen liknar inte traditionell spionagerekrytering. Snarare påminner den om kriminella nätverks rekryteringsmönster: unga män med begränsade ekonomiska resurser som erbjuds snabba kontantbetalningar för enkla uppdrag — bränna ett fordon, spraymåla en vägg, lämna ett paket. Många visste inte vem som stod bakom.</div>
+  <!-- YOB histogram via canvas -->
+  <div style="margin-top:20px" class="panel">
+    <h3>Födelseårsfördelning (n=118 med känt födelseår)</h3>
+    <p style="font-size:12px;color:var(--text-muted);margin-bottom:16px">Stark koncentration i årgångarna 1997&ndash;2008. Intermediaries och Handlers är statistiskt äldre.</p>
+    <canvas id="yobCanvas" height="150"></canvas>
+    <div class="sleg" style="margin-top:10px">
+      <div class="sleg-item"><div class="sw" style="background:#1a5276"></div>1950&ndash;1979</div>
+      <div class="sleg-item"><div class="sw" style="background:#d35400"></div>1980&ndash;1999</div>
+      <div class="sleg-item"><div class="sw" style="background:#c0392b"></div>2000&ndash;2008 (lägst rekryteringströskel)</div>
+    </div>
+  </div>
+
+  <div class="insight">
+    <div class="insight-lbl">Analytisk slutsats</div>
+    <div class="insight-txt">Agentprofilen liknar inte traditionell spionagerekrytering. Den påminner om kriminella nätverks rekryteringsmönster: unga män med begränsade ekonomiska resurser som erbjuds snabba kontantbetalningar för enkla uppdrag &mdash; bränna ett fordon, spraymåla en vägg, lämna ett paket. Många visste inte vem som stod bakom.</div>
   </div>
 </section>
 
+<!-- 02 NÄTVERK -->
 <section id="natverk" style="background:var(--surface)">
-  <div class="section-number">02 — Nätverksstruktur</div>
-  <h2 class="section-title">Hur är nätverket organiserat?</h2>
-  <p class="section-desc">Social nätverksanalys (SNA) av 185 noder och 319 relationer. Hierarkin är tydlig: rysk stat → Kommando → Handlers → Rekryterare → Agenter. Intermediaries fungerar som avskärmande bryggnoder — om en agent grips kan denne inte peka uppåt i kedjan. Betweennesscentralitet mäter strukturell nyckelposition.</p>
+  <div class="sec-num">02 &mdash; Nätverksstruktur</div>
+  <h2 class="sec-title">Hur är nätverket organiserat?</h2>
+  <p class="sec-desc">Social nätverksanalys (SNA) av 185 noder och 319 relationer. Hierarkin är tydlig: Rysk stat &rarr; Kommando &rarr; Handlers &rarr; Rekryterare &rarr; Agenter. Intermediaries fungerar som avskärmande bryggnoder. Betweennesscentralitet mäter strukturell nyckelposition.</p>
 
-  <div class="network-layout reveal">
+  <div class="net-layout">
     <div>
-      <svg id="networkGraph" style="width:100%;height:520px;background:var(--bg);border:1px solid var(--border);border-radius:3px;display:block"></svg>
-      <p style="font-size:10px;color:var(--text-dim);margin-top:8px;font-family:var(--mono)">Dra noder för att utforska strukturen · Hover för rollinfo · Schematisk representation</p>
+      <canvas id="netCanvas" height="500" style="background:var(--bg);border:1px solid var(--border);border-radius:3px"></canvas>
+      <p style="font-size:10px;color:var(--text-dim);margin-top:7px;font-family:var(--mono)">Schematisk hierarkisk representation &middot; Klicka och dra för att flytta noder</p>
     </div>
     <div>
-      <div class="net-legend-block">
+      <div class="net-block">
         <h4>Rollkod</h4>
-        <div class="net-legend-item"><div class="net-dot" style="width:22px;height:22px;background:#7f1d1d;border:2px solid #c0392b"></div><div><strong style="color:var(--text)">Rysk stat</strong><br>GRU/FSB uppdragsgivare</div></div>
-        <div class="net-legend-item"><div class="net-dot" style="width:16px;height:16px;background:#6b2c00;border:2px solid #d35400"></div><div><strong style="color:var(--text)">Handler</strong><br>Operativ ledning</div></div>
-        <div class="net-legend-item"><div class="net-dot" style="width:14px;height:14px;background:#3b1f52;border:2px solid #7d3c98"></div><div><strong style="color:var(--text)">Intermediary</strong><br>Avskärmningsnod</div></div>
-        <div class="net-legend-item"><div class="net-dot" style="width:12px;height:12px;background:#0d3b1a;border:2px solid #1e8449"></div><div><strong style="color:var(--text)">Rekryterare</strong><br>Bygger agentlager</div></div>
-        <div class="net-legend-item"><div class="net-dot" style="width:10px;height:10px;background:#1a2c4a;border:2px solid #2980b9"></div><div><strong style="color:var(--text)">Agent</strong><br>Utför uppdrag</div></div>
+        <div class="nleg-item"><div class="ndot" style="width:20px;height:20px;background:#7f1d1d;border-color:#c0392b"></div><div><strong style="color:var(--text)">Rysk stat</strong> &mdash; GRU/FSB</div></div>
+        <div class="nleg-item"><div class="ndot" style="width:16px;height:16px;background:#6b2c00;border-color:#d35400"></div><div><strong style="color:var(--text)">Handler</strong> &mdash; operativ ledning</div></div>
+        <div class="nleg-item"><div class="ndot" style="width:14px;height:14px;background:#3b1f52;border-color:#7d3c98"></div><div><strong style="color:var(--text)">Intermediary</strong> &mdash; avskärmning</div></div>
+        <div class="nleg-item"><div class="ndot" style="width:12px;height:12px;background:#0d3b1a;border-color:#1e8449"></div><div><strong style="color:var(--text)">Rekryterare</strong> &mdash; agentlager</div></div>
+        <div class="nleg-item"><div class="ndot" style="width:10px;height:10px;background:#1a2c4a;border-color:#2980b9"></div><div><strong style="color:var(--text)">Agent</strong> &mdash; utför uppdrag</div></div>
       </div>
-      <div class="net-legend-block">
-        <h4>Relationstyp</h4>
-        <div class="net-edge-item"><div class="net-edge-line" style="background:#c0392b;height:2px"></div>Directs (hierarkisk)</div>
-        <div class="net-edge-item"><div class="net-edge-line" style="background:#2ecc71;border-top:1px dashed #2ecc71;height:0"></div>Collaborates (lateral)</div>
-        <div class="net-edge-item"><div class="net-edge-line" style="background:#f39c12;height:2px"></div>Commands</div>
-      </div>
-      <div class="net-legend-block">
+      <div class="net-block">
         <h4>Betweenness-centralitet</h4>
-        <p style="font-size:10px;color:var(--text-dim);margin-bottom:10px">Genomsnitt per roll (huvudkluster, n=140)</p>
-        <div class="cent-row"><div class="cent-label">Kommando</div><div class="cent-track"><div class="cent-fill" style="width:100%;background:#c0392b"></div></div><div class="cent-val">0.112</div></div>
-        <div class="cent-row"><div class="cent-label">Ops Manager</div><div class="cent-track"><div class="cent-fill" style="width:65%;background:#d35400"></div></div><div class="cent-val">0.073</div></div>
-        <div class="cent-row"><div class="cent-label">Intermediary</div><div class="cent-track"><div class="cent-fill" style="width:53%;background:#7d3c98"></div></div><div class="cent-val">0.059</div></div>
-        <div class="cent-row"><div class="cent-label">Handler</div><div class="cent-track"><div class="cent-fill" style="width:48%;background:#c0a000"></div></div><div class="cent-val">0.054</div></div>
-        <div class="cent-row"><div class="cent-label">Rekryterare</div><div class="cent-track"><div class="cent-fill" style="width:12%;background:#1e8449"></div></div><div class="cent-val">0.013</div></div>
-        <div class="cent-row"><div class="cent-label">Agent</div><div class="cent-track"><div class="cent-fill" style="width:4%;background:#2980b9"></div></div><div class="cent-val">0.004</div></div>
+        <p style="font-size:10px;color:var(--text-dim);margin-bottom:10px">Genomsnitt per roll (huvudkluster)</p>
+        <div class="hbar-row"><div class="hbar-lbl" style="font-size:9px;width:90px">Kommando</div><div class="hbar-track"><div class="hbar-fill" style="width:100%;background:#c0392b"></div></div><div class="hbar-n" style="font-size:9px">0.112</div></div>
+        <div class="hbar-row"><div class="hbar-lbl" style="font-size:9px;width:90px">Ops Manager</div><div class="hbar-track"><div class="hbar-fill" style="width:65%;background:#d35400"></div></div><div class="hbar-n" style="font-size:9px">0.073</div></div>
+        <div class="hbar-row"><div class="hbar-lbl" style="font-size:9px;width:90px">Intermediary</div><div class="hbar-track"><div class="hbar-fill" style="width:53%;background:#7d3c98"></div></div><div class="hbar-n" style="font-size:9px">0.059</div></div>
+        <div class="hbar-row"><div class="hbar-lbl" style="font-size:9px;width:90px">Handler</div><div class="hbar-track"><div class="hbar-fill" style="width:48%;background:#c0a000"></div></div><div class="hbar-n" style="font-size:9px">0.054</div></div>
+        <div class="hbar-row"><div class="hbar-lbl" style="font-size:9px;width:90px">Rekryterare</div><div class="hbar-track"><div class="hbar-fill" style="width:12%;background:#1e8449"></div></div><div class="hbar-n" style="font-size:9px">0.013</div></div>
+        <div class="hbar-row"><div class="hbar-lbl" style="font-size:9px;width:90px">Agent</div><div class="hbar-track"><div class="hbar-fill" style="width:4%;background:#2980b9"></div></div><div class="hbar-n" style="font-size:9px">0.004</div></div>
+      </div>
+      <div class="net-block">
+        <h4>Nätverksstatistik</h4>
+        <p style="font-size:11px;color:var(--text-muted);line-height:1.7">
+          185 noder &middot; 319 kanter<br>
+          140 noder i huvudkluster<br>
+          65 kollaborativa dyader<br>
+          133 hierarkiska dyader
+        </p>
       </div>
     </div>
   </div>
 
-  <div class="insight-box orange reveal">
-    <div class="insight-label">Strukturell observation</div>
-    <div class="insight-text">Intermediaries har oproportionerligt hög betweennesscentralitet relativt sin numerära andel. De fungerar som designade avskärmningsnoder — om en agent identifieras och grips kan denne inte peka uppåt i hierarkin. Detta är en medveten motintelligensstruktur, inte en tillfällighet. Nätverket är designat för förnekbarhet på alla nivåer utom kommandotoppen.</div>
+  <div class="insight o">
+    <div class="insight-lbl">Strukturell observation</div>
+    <div class="insight-txt">Intermediaries har oproportionerligt hög betweennesscentralitet relativt sin numerära andel. De fungerar som designade avskärmningsnoder &mdash; om en agent grips kan denne inte peka uppåt i hierarkin. Nätverket är konstruerat för förnekbarhet på alla nivåer utom kommandotoppen.</div>
   </div>
 </section>
 
+<!-- 03 GEOGRAFI -->
 <section id="geografi">
-  <div class="section-number">03 — Geografisk fördelning</div>
-  <h2 class="section-title">Varifrån rekryteras agenterna?</h2>
-  <p class="section-desc">Totalt 136 individer med känd nationalitet från 23 länder. Ukraina dominerar numerärt — förklaras av proximitet, diaspora och Rysslands utnyttjande av sårbarhet i konfliktzonen. Östeuropa och fd. Sovjet utgör kärnan, men rekrytering sker i hela EU och bortom.</p>
+  <div class="sec-num">03 &mdash; Geografisk fördelning</div>
+  <h2 class="sec-title">Varifrån rekryteras agenterna?</h2>
+  <p class="sec-desc">Totalt 136 individer med känd nationalitet från 23 länder. Ukraina dominerar numerärt &mdash; förklaras av proximitet, diaspora och Rysslands utnyttjande av sårbarhet i konfliktzonen. Östeuropa och fd. Sovjet utgör kärnan, men rekrytering sker i hela EU.</p>
 
-  <div class="map-layout reveal">
+  <div class="map-layout">
     <div>
-      <svg id="europeMap" style="width:100%;height:480px;background:var(--surface);border:1px solid var(--border);border-radius:3px;display:block"></svg>
+      <canvas id="mapCanvas" height="460" style="background:var(--surface);border:1px solid var(--border);border-radius:3px"></canvas>
     </div>
     <div>
-      <div class="net-legend-block">
-        <div style="font-family:var(--mono);font-size:9px;text-transform:uppercase;letter-spacing:.14em;color:var(--text-dim);margin-bottom:10px">Topp 10 nationaliteter (n=136)</div>
-        <div id="natRankList"></div>
+      <div class="net-block">
+        <h4>Topp 10 nationaliteter (n=136)</h4>
+        <div id="natList"></div>
       </div>
-      <div class="net-legend-block">
+      <div class="net-block">
         <h4>Geografisk analys</h4>
-        <p style="font-size:11px;color:var(--text-muted);line-height:1.7"><strong style="color:var(--text)">Östlig tyngdpunkt:</strong> UA, RU/duals, MD och BG utgör ~58% av känd nationalitet.<br><br><strong style="color:var(--text)">Västeuropeisk penetration:</strong> UK (n=6), Colombia (n=4) och NL (n=4) indikerar rekrytering i diasporasamhällen bortom Östeuropa.<br><br><strong style="color:var(--text)">Balterna:</strong> Estland (n=8) och Lettland (n=7) — möjligen kopplat till ryskspråkig minoritetsrekrytering.</p>
+        <p style="font-size:11px;color:var(--text-muted);line-height:1.7">
+          <strong style="color:var(--text)">Östlig tyngdpunkt:</strong> UA, RU/duals, MD och BG utgör ~58% av känd nationalitet.<br><br>
+          <strong style="color:var(--text)">Västeuropeisk penetration:</strong> UK (n=6), NL (n=4) indikerar rekrytering i diasporasamhällen.<br><br>
+          <strong style="color:var(--text)">Balterna:</strong> Estland (n=8) och Lettland (n=7) &mdash; kopplat till ryskspråkig minoritetsrekrytering.
+        </p>
       </div>
     </div>
   </div>
 
-  <div class="insight-box purple reveal">
-    <div class="insight-label">Underrättelseimplikation</div>
-    <div class="insight-text">Att Ukraina toppar listan bör inte missförstås som ukrainsk sympati för Ryssland. Det speglar Rysslands förmåga att utnyttja sårbarhet — ekonomisk desperation, familjer i konfliktzon, sociala påtryckningar. En stor andel ukrainska agenter rekryterades under falska förespeglingar om vad uppdraget innebar eller vem uppdragsgivaren var.</div>
+  <div class="insight p">
+    <div class="insight-lbl">Underrättelseimplikation</div>
+    <div class="insight-txt">Att Ukraina toppar listan speglar Rysslands förmåga att utnyttja sårbarhet &mdash; ekonomisk desperation, familjer i konfliktzon, sociala påtryckningar &mdash; snarare än ukrainsk sympati för Ryssland. En stor andel rekryterades under falska förespeglingar om uppdragets natur och uppdragsgivarens identitet.</div>
   </div>
 </section>
 
+<!-- 04 MOTIVATION -->
 <section id="motivation" style="background:var(--surface)">
-  <div class="section-number">04 — Motivationsanalys</div>
-  <h2 class="section-title">Varför accepterar de?</h2>
-  <p class="section-desc">Motivationsdata finns för 95 individer (ex. "okänd"). Monetär ersättning dominerar kraftigt. Ideologisk övertygelse är sällsynt och förekommer primärt bland Handlers — de med djupare koppling till ryska intressen. Agenter "ovetande" om uppdraget är ett särskilt oroande mönster ur ett kontraspionageperspektiv.</p>
+  <div class="sec-num">04 &mdash; Motivationsanalys</div>
+  <h2 class="sec-title">Varför accepterar de?</h2>
+  <p class="sec-desc">Motivationsdata finns för 95 individer. Monetär ersättning dominerar kraftigt. Ideologisk övertygelse är sällsynt och förekommer primärt bland Handlers. Agenter "ovetande" om uppdraget är ett särskilt oroande mönster ur kontraspionageperspektiv.</p>
 
-  <div class="matrix-container reveal">
-    <p style="font-family:var(--mono);font-size:9px;color:var(--text-dim);text-transform:uppercase;letter-spacing:.14em;margin-bottom:16px">Motivationsmatris: Antal individer per roll och motivation</p>
-    <svg id="motivationMatrix" style="width:100%;height:220px"></svg>
+  <div class="panel" style="margin-bottom:0">
+    <h3>Motivationsmatris &mdash; antal individer per roll och motivation</h3>
+    <canvas id="matCanvas" height="200"></canvas>
   </div>
 
-  <div class="matrix-finding reveal">
-    <div class="mf-card"><span class="mf-card-num" style="color:#3498db">~63%</span><div class="mf-card-label">av individer med känd motivation drivs av pengar. Beloppen är ofta låga — motsvarande några hundra euro per uppdrag.</div></div>
-    <div class="mf-card"><span class="mf-card-num" style="color:#c0392b">~13%</span><div class="mf-card-label">motiveras av ideologi. Förekommer främst bland Handlers och Intermediaries — roller med djupare operativ insikt i vem uppdragsgivaren är.</div></div>
-    <div class="mf-card"><span class="mf-card-num" style="color:#f39c12">~7%</span><div class="mf-card-label">klassificeras som "ovetande". De trodde sig utföra ett lagligt uppdrag — fotografering, leverans, rekrytering av "medarbetare".</div></div>
+  <div class="mf-grid">
+    <div class="mf-card"><span class="mf-num" style="color:#3498db">~63%</span><div class="mf-lbl">av individer med känd motivation drivs av pengar. Beloppen är ofta låga &mdash; några hundra euro per uppdrag.</div></div>
+    <div class="mf-card"><span class="mf-num" style="color:#c0392b">~13%</span><div class="mf-lbl">motiveras av ideologi. Förekommer främst bland Handlers och Intermediaries med djupare operativ insikt.</div></div>
+    <div class="mf-card"><span class="mf-num" style="color:#f39c12">~7%</span><div class="mf-lbl">är "ovetande". De trodde sig utföra ett lagligt uppdrag &mdash; fotografering, leverans, rekrytering av "medarbetare".</div></div>
   </div>
 
-  <div class="insight-box green reveal">
-    <div class="insight-label">Sakerhetspolitisk implikation</div>
-    <div class="insight-text">Den monetärt motiverade agenten utgör det lägsta inträdeshindret för rysk underrättelsetjänst. Inga ideologiska band krävs, ingen träning, ingen screeningprocess — en Telegramkanal och betalning via kryptovaluta räcker. Det gör kontraspionaget fundamentalt svårare: dessa individer syns inte i traditionella extremismdatabaser och saknar identifierbart ideologiskt fotavtryck.</div>
+  <div class="insight g">
+    <div class="insight-lbl">Säkerhetspolitisk implikation</div>
+    <div class="insight-txt">Den monetärt motiverade agenten utgör det lägsta inträdeshindret. Inga ideologiska band krävs, ingen träning &mdash; en Telegramkanal och kryptovalutabetalning räcker. Dessa individer syns inte i traditionella extremismdatabaser och saknar identifierbart ideologiskt fotavtryck.</div>
   </div>
 </section>
 
+<!-- 05 PLATTFORM -->
 <section id="plattform">
-  <div class="section-number">05 — Rekryteringsplattform</div>
-  <h2 class="section-title">Hur rekryteras de?</h2>
-  <p class="section-desc">Telegram är den dominerande rekryteringskanalen. Det tillåter pseudonymitet, försvårar avlyssning och möjliggör massdistribution av uppdragsbeskrivningar. Interpersonell rekrytering — via befintliga sociala nätverk — är vanlig bland äldre roller med lojalitetsmotivation.</p>
+  <div class="sec-num">05 &mdash; Rekryteringsplattform</div>
+  <h2 class="sec-title">Hur rekryteras de?</h2>
+  <p class="sec-desc">Telegram är den dominerande rekryteringskanalen. Plattformens pseudonymitet och kryptering försvårar avlyssning och möjliggör massdistribution av uppdragsbeskrivningar. Interpersonell rekrytering är vanlig bland äldre roller med lojalitetsmotivation.</p>
 
-  <div class="platform-grid reveal">
-    <div class="plat-card"><span class="plat-icon">✈</span><div class="plat-name">Telegram</div><span class="plat-num" style="color:#2ca5e0">42</span><span class="plat-pct">~29% av total (excl. okänd)</span></div>
-    <div class="plat-card"><span class="plat-icon">🤝</span><div class="plat-name">Interpersonell</div><span class="plat-num" style="color:#27ae60">17</span><span class="plat-pct">~12% — fysiska nätverk och bekanta</span></div>
-    <div class="plat-card"><span class="plat-icon">📱</span><div class="plat-name">Multipla kanaler</div><span class="plat-num" style="color:#8e44ad">~60</span><span class="plat-pct">Telegram kombinerat med annan kanal</span></div>
-    <div class="plat-card"><span class="plat-icon">👥</span><div class="plat-name">Facebook</div><span class="plat-num" style="color:#3b5998">6</span><span class="plat-pct">Primärt bulgariska agenter</span></div>
-    <div class="plat-card"><span class="plat-icon">📞</span><div class="plat-name">Viber / Telefon</div><span class="plat-num" style="color:#7d3daf">5</span><span class="plat-pct">Krypterade röst- och chattkanaler</span></div>
-    <div class="plat-card"><span class="plat-icon">❓</span><div class="plat-name">Okänd</div><span class="plat-num" style="color:var(--text-dim)">40</span><span class="plat-pct">28% — data ej tillgänglig</span></div>
+  <div class="plat-grid">
+    <div class="plat-card"><span class="plat-icon">&#9992;</span><div class="plat-name">Telegram</div><span class="plat-num" style="color:#2ca5e0">42</span><span class="plat-sub">~29% (excl. okänd)</span></div>
+    <div class="plat-card"><span class="plat-icon">&#128075;</span><div class="plat-name">Interpersonell</div><span class="plat-num" style="color:#27ae60">17</span><span class="plat-sub">Fysiska nätverk och bekanta</span></div>
+    <div class="plat-card"><span class="plat-icon">&#128241;</span><div class="plat-name">Multipla kanaler</div><span class="plat-num" style="color:#8e44ad">~60</span><span class="plat-sub">Telegram + annan kanal</span></div>
+    <div class="plat-card"><span class="plat-icon">&#128101;</span><div class="plat-name">Facebook</div><span class="plat-num" style="color:#3b5998">6</span><span class="plat-sub">Primärt bulgariska agenter</span></div>
+    <div class="plat-card"><span class="plat-icon">&#128222;</span><div class="plat-name">Viber / Telefon</div><span class="plat-num" style="color:#7d3daf">5</span><span class="plat-sub">Krypterade röstkanaler</span></div>
+    <div class="plat-card"><span class="plat-icon">&#10067;</span><div class="plat-name">Okänd</div><span class="plat-num" style="color:#4a5a6e">40</span><span class="plat-sub">28% saknar plattformsdata</span></div>
   </div>
 
-  <div class="insight-box blue reveal">
-    <div class="insight-label">Operativ observation</div>
-    <div class="insight-text">Telegrammodellen möjliggör skalbar rekrytering: ett konto kan kontakta hundratals potentiella agenter med erbjudanden om uppdrag. Plattformens kryptering och möjlighet till anonym drift gör det svårt för motintelligens att avbryta kommunikationskedjor. Trenden mot multipla kanaler — Telegram kombinerat med Zengi, WhatsApp eller Signal — indikerar att operatörerna söker redundans och robusthet i kommunikationsinfrastrukturen.</div>
+  <div class="insight b">
+    <div class="insight-lbl">Operativ observation</div>
+    <div class="insight-txt">Telegrammodellen möjliggör skalbar rekrytering: ett konto kan kontakta hundratals potentiella agenter med uppdragserbjudanden. Trenden mot multipla kanaler &mdash; Telegram kombinerat med Zengi, WhatsApp eller Signal &mdash; indikerar att operatörerna söker redundans och robusthet i kommunikationsinfrastrukturen.</div>
   </div>
 </section>
 
 <footer>
-  <div class="footer-grid">
-    <div class="footer-col">
-      <h4>Datakälla</h4>
-      <p>Schuurman, B. (2026). Russia's Low-Level Agents in Europe, 2022–2025. Leiden University, Institute of Security and Global Affairs. Dataset v. 2026-04-13. Fullständigt anonymiserat per etikprövning.</p>
-    </div>
-    <div class="footer-col">
-      <h4>Metodnoter</h4>
-      <ul>
-        <li>N=145 individer; N=144 i analyserbara fält</li>
-        <li>"Okänd" exkluderas i procentberäkningar</li>
-        <li>YOB-data: n=118 med känt födelseår</li>
-        <li>SNA: 185 noder, 319 kanter (bekräftade + infererade)</li>
-        <li>Nationalitetsdata: n=136 (ex. okänd)</li>
-        <li>Nätverksgraf: schematisk, ej exakta relationer</li>
-      </ul>
-    </div>
-    <div class="footer-col">
-      <h4>Visualisering</h4>
-      <p>Svensk OSINT · D3.js v7<br>Publicerad 2026<br><br>Avsedd för analytisk och pedagogisk användning. All data är anonymiserad i ursprungsdatasetet.</p>
-    </div>
+  <div class="foot-grid">
+    <div class="foot-col"><h4>Datakälla</h4><p>Schuurman, B. (2026). Russia's Low-Level Agents in Europe, 2022&ndash;2025. Leiden University, Institute of Security and Global Affairs. Dataset v.2026-04-13. Fullständigt anonymiserat.</p></div>
+    <div class="foot-col"><h4>Metodnoter</h4><ul><li>N=145 individer; N=144 i analyserbara fält</li><li>"Okänd" exkluderas i procentberäkningar</li><li>YOB-data: n=118 med känt födelseår</li><li>SNA: 185 noder, 319 kanter (bekräftade + infererade)</li><li>Nationalitetsdata: n=136 (ex. okänd)</li><li>Nätverksgraf: schematisk representation</li></ul></div>
+    <div class="foot-col"><h4>Visualisering</h4><p>Svensk OSINT &middot; 2026<br>Inga externa beroenden &mdash; fungerar offline.<br><br>Avsedd för analytisk och pedagogisk användning. All data är anonymiserad i ursprungsdatasetet.</p></div>
   </div>
 </footer>
 
 <script>
-const tt = document.getElementById('tooltip');
-function showTooltip(event,text){tt.innerHTML=text.replace(/\n/g,'<br>');tt.style.opacity='1';moveTooltip(event)}
-function moveTooltip(event){tt.style.left=(event.clientX+14)+'px';tt.style.top=(event.clientY+14)+'px'}
-function hideTooltip(){tt.style.opacity='0'}
+// ── TOOLTIP ──
+const tt = document.getElementById('tt');
+function showTT(x, y, html) { tt.innerHTML = html; tt.style.left = (x+14)+'px'; tt.style.top = (y+14)+'px'; tt.style.display = 'block'; }
+function hideTT() { tt.style.display = 'none'; }
 
-// YOB CHART
-function drawYOB(){
-  const bins=[
-    {s:1950,n:4},{s:1955,n:2},{s:1960,n:5},{s:1965,n:3},{s:1970,n:2},
+// ── YOB HISTOGRAM (Canvas) ──
+function drawYOB() {
+  const canvas = document.getElementById('yobCanvas');
+  canvas.width = canvas.parentElement.clientWidth;
+  const W = canvas.width, H = canvas.height;
+  const ctx = canvas.getContext('2d');
+  ctx.clearRect(0, 0, W, H);
+
+  const bins = [
+    {s:1950,n:4},{s:1955,n:2},{s:1960,n:6},{s:1965,n:3},{s:1970,n:2},
     {s:1975,n:5},{s:1980,n:5},{s:1985,n:12},{s:1990,n:10},{s:1995,n:13},
-    {s:2000,n:7},{s:2005,n:14},{s:2010,n:0}
+    {s:2000,n:7},{s:2005,n:14}
   ];
-  const el=document.getElementById('yobChart');
-  const W=el.parentElement.clientWidth||700;
-  const H=160;
-  el.setAttribute('width',W);el.setAttribute('height',H);
-  const svg=d3.select('#yobChart');svg.selectAll('*').remove();
-  const m={top:10,right:16,bottom:28,left:28};
-  const w=W-m.left-m.right,h=H-m.top-m.bottom;
-  const g=svg.append('g').attr('transform',`translate(${m.left},${m.top})`);
-  const x=d3.scaleBand().domain(bins.map(b=>b.s)).range([0,w]).padding(0.12);
-  const y=d3.scaleLinear().domain([0,d3.max(bins,b=>b.n)+1]).range([h,0]);
-  const col=b=>b.s>=2000?'#c0392b':b.s>=1980?'#d35400':'#1a5276';
-  g.selectAll('.bar').data(bins).join('rect')
-    .attr('class','bar').attr('x',b=>x(b.s)).attr('y',b=>y(b.n))
-    .attr('width',x.bandwidth()).attr('height',b=>h-y(b.n))
-    .attr('fill',col).attr('rx',2).attr('opacity',0.85)
-    .on('mouseover',(ev,b)=>showTooltip(ev,`${b.s}–${b.s+4}\nn = ${b.n} individer`))
-    .on('mousemove',moveTooltip).on('mouseout',hideTooltip);
-  g.append('g').attr('transform',`translate(0,${h})`)
-    .call(d3.axisBottom(x).tickSize(0))
-    .call(ax=>{ax.select('.domain').attr('stroke','#1c2333');ax.selectAll('text').style('font-family','IBM Plex Mono').style('font-size','8px').style('fill','#4a5a6e')});
-  g.append('g').call(d3.axisLeft(y).ticks(5).tickSize(-w))
-    .call(ax=>{ax.select('.domain').remove();ax.selectAll('.tick line').attr('stroke','#1c2333').attr('stroke-dasharray','2,4');ax.selectAll('text').style('font-family','IBM Plex Mono').style('font-size','8px').style('fill','#4a5a6e')});
-}
+  const m = {t:10, r:16, b:28, l:30};
+  const w = W-m.l-m.r, h = H-m.t-m.b;
+  const maxN = Math.max(...bins.map(b=>b.n));
+  const bw = w / bins.length;
+  const gap = bw * 0.12;
 
-// NETWORK
-function drawNetwork(){
-  const el=document.getElementById('networkGraph');
-  const W=el.parentElement.clientWidth||700;
-  const H=520;
-  el.setAttribute('width',W);el.setAttribute('height',H);
-  const svg=d3.select('#networkGraph');svg.selectAll('*').remove();
-  const nodes=[
-    {id:'RS',label:'Rysk Stat',role:'state',r:22},
-    {id:'CMD',label:'Kommando',role:'command',r:15},
-    {id:'OPS',label:'Ops Mgr',role:'ops',r:13},
-    {id:'H1',label:'Handler',role:'handler',r:11},{id:'H2',label:'Handler',role:'handler',r:11},
-    {id:'H3',label:'Handler',role:'handler',r:11},{id:'H4',label:'Handler',role:'handler',r:11},
-    {id:'IM1',label:'Interm.',role:'intermediary',r:9},{id:'IM2',label:'Interm.',role:'intermediary',r:9},{id:'IM3',label:'Interm.',role:'intermediary',r:9},
-    {id:'R1',label:'Rekr.',role:'recruiter',r:8},{id:'R2',label:'Rekr.',role:'recruiter',r:8},
-    {id:'A1',label:'A',role:'agent',r:6},{id:'A2',label:'A',role:'agent',r:6},{id:'A3',label:'A',role:'agent',r:6},
-    {id:'A4',label:'A',role:'agent',r:6},{id:'A5',label:'A',role:'agent',r:6},{id:'A6',label:'A',role:'agent',r:6},
-    {id:'A7',label:'A',role:'agent',r:6},{id:'A8',label:'A',role:'agent',r:6},{id:'A9',label:'A',role:'agent',r:6},
-    {id:'A10',label:'A',role:'agent',r:6},{id:'A11',label:'A',role:'agent',r:6},{id:'A12',label:'A',role:'agent',r:6},
-  ];
-  const links=[
-    {s:'RS',t:'CMD',type:'commands'},{s:'CMD',t:'OPS',type:'directs'},
-    {s:'OPS',t:'H1',type:'directs'},{s:'OPS',t:'H2',type:'directs'},
-    {s:'CMD',t:'H3',type:'directs'},{s:'CMD',t:'H4',type:'directs'},
-    {s:'H1',t:'IM1',type:'directs'},{s:'H2',t:'IM2',type:'directs'},{s:'H3',t:'IM3',type:'directs'},
-    {s:'IM1',t:'R1',type:'directs'},{s:'IM2',t:'R2',type:'directs'},
-    {s:'H4',t:'R2',type:'directs'},
-    {s:'R1',t:'A1',type:'directs'},{s:'R1',t:'A2',type:'directs'},{s:'R1',t:'A3',type:'directs'},
-    {s:'R2',t:'A4',type:'directs'},{s:'R2',t:'A5',type:'directs'},
-    {s:'H1',t:'A6',type:'directs'},{s:'H2',t:'A7',type:'directs'},
-    {s:'H4',t:'A8',type:'directs'},{s:'IM3',t:'A9',type:'directs'},
-    {s:'H3',t:'A10',type:'directs'},{s:'H4',t:'A11',type:'directs'},{s:'IM3',t:'A12',type:'directs'},
-    {s:'A1',t:'A2',type:'collab'},{s:'A4',t:'A5',type:'collab'},{s:'IM1',t:'IM2',type:'collab'},
-  ];
-  const rc={'state':'#c0392b','command':'#922b21','ops':'#d35400','handler':'#c0a000','intermediary':'#7d3c98','recruiter':'#1e8449','agent':'#2980b9'};
-  const rd={'state':'Rysk stat (GRU/FSB)','command':'Kommando','ops':'Operations Manager','handler':'Handler','intermediary':'Intermediary','recruiter':'Rekryterare','agent':'Agent'};
-  const lc={'commands':'#f39c12','directs':'#c0392b','collab':'#2ecc71'};
-  const ldata=links.map(l=>({source:l.s,target:l.t,type:l.type}));
-  svg.append('defs').append('marker').attr('id','arr').attr('viewBox','0 -4 8 8').attr('refX',8).attr('refY',0).attr('markerWidth',5).attr('markerHeight',5).attr('orient','auto')
-    .append('path').attr('d','M0,-4L8,0L0,4').attr('fill','#c0392b').attr('opacity',0.5);
-  const sim=d3.forceSimulation(nodes)
-    .force('link',d3.forceLink(ldata).id(d=>d.id).distance(55).strength(0.4))
-    .force('charge',d3.forceManyBody().strength(-100))
-    .force('center',d3.forceCenter(W/2,H/2))
-    .force('collision',d3.forceCollide(d=>d.r+7))
-    .force('y',d3.forceY(d=>{const lv={'state':.09,'command':.2,'ops':.3,'handler':.42,'intermediary':.56,'recruiter':.68,'agent':.83};return H*(lv[d.role]||.5)}).strength(0.55));
-  const linkEl=svg.append('g').selectAll('line').data(ldata).join('line')
-    .attr('stroke',d=>lc[d.type]||'#333').attr('stroke-width',d=>d.type==='collab'?1:1.5)
-    .attr('stroke-dasharray',d=>d.type==='collab'?'4,3':'none')
-    .attr('opacity',d=>d.type==='collab'?.35:.55)
-    .attr('marker-end',d=>d.type!=='collab'?'url(#arr)':'none');
-  const nodeEl=svg.append('g').selectAll('g').data(nodes).join('g').attr('cursor','grab')
-    .call(d3.drag()
-      .on('start',(ev,d)=>{if(!ev.active)sim.alphaTarget(.3).restart();d.fx=d.x;d.fy=d.y})
-      .on('drag',(ev,d)=>{d.fx=ev.x;d.fy=ev.y})
-      .on('end',(ev,d)=>{if(!ev.active)sim.alphaTarget(0);d.fx=null;d.fy=null}))
-    .on('mouseover',(ev,d)=>showTooltip(ev,`${rd[d.role]}`))
-    .on('mousemove',moveTooltip).on('mouseout',hideTooltip);
-  nodeEl.append('circle').attr('r',d=>d.r).attr('fill',d=>rc[d.role]+'2a').attr('stroke',d=>rc[d.role]).attr('stroke-width',1.5);
-  nodeEl.append('text').attr('text-anchor','middle').attr('dominant-baseline','middle')
-    .attr('font-family','IBM Plex Mono').attr('font-size',d=>d.role==='agent'?6:8)
-    .attr('fill',d=>rc[d.role])
-    .text(d=>d.role==='agent'?'A':d.label.split(' ')[0]);
-  sim.on('tick',()=>{
-    linkEl.attr('x1',d=>d.source.x).attr('y1',d=>d.source.y)
-      .attr('x2',d=>{const dx=d.target.x-d.source.x,dy=d.target.y-d.source.y,dist=Math.sqrt(dx*dx+dy*dy);return dist>0?d.target.x-(dx/dist)*d.target.r:d.target.x})
-      .attr('y2',d=>{const dx=d.target.x-d.source.x,dy=d.target.y-d.source.y,dist=Math.sqrt(dx*dx+dy*dy);return dist>0?d.target.y-(dy/dist)*d.target.r:d.target.y});
-    nodeEl.attr('transform',d=>`translate(${Math.max(d.r+4,Math.min(W-d.r-4,d.x))},${Math.max(d.r+4,Math.min(H-d.r-4,d.y))})`);
+  // Grid lines
+  ctx.strokeStyle = '#1c2333'; ctx.lineWidth = 1;
+  [0,4,8,12].forEach(v => {
+    const y = m.t + h - (v/maxN)*h;
+    ctx.setLineDash([2,4]);
+    ctx.beginPath(); ctx.moveTo(m.l, y); ctx.lineTo(m.l+w, y); ctx.stroke();
+    ctx.setLineDash([]);
+    ctx.fillStyle = '#4a5a6e'; ctx.font = '8px ui-monospace,monospace';
+    ctx.textAlign = 'right'; ctx.fillText(v, m.l-4, y+3);
   });
+
+  bins.forEach((bin, i) => {
+    const x = m.l + i*bw + gap;
+    const bw2 = bw - gap*2;
+    const bh = (bin.n/maxN)*h;
+    const by = m.t + h - bh;
+    const color = bin.s >= 2000 ? '#c0392b' : bin.s >= 1980 ? '#d35400' : '#1a5276';
+    ctx.fillStyle = color;
+    ctx.beginPath();
+    ctx.roundRect(x, by, bw2, bh, 2);
+    ctx.fill();
+    // X label
+    ctx.fillStyle = '#4a5a6e'; ctx.font = '8px ui-monospace,monospace'; ctx.textAlign = 'center';
+    ctx.fillText(bin.s, m.l + i*bw + bw/2, H-4);
+  });
+
+  // Hover
+  canvas.onmousemove = (e) => {
+    const rect = canvas.getBoundingClientRect();
+    const mx = (e.clientX - rect.left) * (W / rect.width);
+    const i = Math.floor((mx - m.l) / bw);
+    if (i >= 0 && i < bins.length) {
+      showTT(e.clientX, e.clientY, bins[i].s+'&ndash;'+(bins[i].s+4)+'<br>n = '+bins[i].n+' individer');
+    } else hideTT();
+  };
+  canvas.onmouseleave = hideTT;
 }
 
-// MAP
-function drawMap(){
-  const el=document.getElementById('europeMap');
-  const W=el.parentElement.clientWidth||600;
-  const H=480;
-  el.setAttribute('width',W);el.setAttribute('height',H);
-  const svg=d3.select('#europeMap');svg.selectAll('*').remove();
-  const natData=[
-    {name:'Ukraina',n:28,lat:49.0,lng:31.5},{name:'Ryssland/duals',n:24,lat:60.0,lng:55.0},
-    {name:'Moldavien',n:15,lat:47.4,lng:28.4},{name:'Bulgarien',n:11,lat:42.7,lng:25.5},
-    {name:'Estland',n:8,lat:58.6,lng:25.0},{name:'Lettland',n:7,lat:56.9,lng:24.6},
-    {name:'Vitryssland',n:7,lat:53.7,lng:28.0},{name:'UK',n:6,lat:52.4,lng:-1.5},
-    {name:'Serbien',n:5,lat:44.0,lng:21.0},{name:'Nederländerna',n:4,lat:52.1,lng:5.3},
-    {name:'Colombia',n:4,lat:4.6,lng:-74.1},{name:'Litauen',n:2,lat:55.2,lng:24.0},
-    {name:'Polen',n:3,lat:51.9,lng:19.1},{name:'Kuba',n:2,lat:21.5,lng:-79.5},
-    {name:'Tyskland',n:2,lat:51.2,lng:10.5},{name:'Rumänien',n:1,lat:45.9,lng:25.0},
-    {name:'Österrike',n:1,lat:47.5,lng:14.5},{name:'Spanien',n:1,lat:40.4,lng:-3.7},
-    {name:'Bosnien',n:1,lat:43.9,lng:17.7},
+// ── NETWORK (Canvas) ──
+function drawNetwork() {
+  const canvas = document.getElementById('netCanvas');
+  canvas.width = canvas.parentElement.clientWidth - 300 - 20;
+  if (canvas.width < 100) canvas.width = canvas.parentElement.clientWidth;
+  const W = canvas.width, H = canvas.height;
+  const ctx = canvas.getContext('2d');
+
+  const rc = {state:'#c0392b', command:'#922b21', ops:'#d35400', handler:'#c0a000', intermediary:'#7d3c98', recruiter:'#1e8449', agent:'#2980b9'};
+  const rd = {state:'Rysk stat (GRU/FSB)', command:'Kommando', ops:'Operations Manager', handler:'Handler', intermediary:'Intermediary', recruiter:'Rekryterare', agent:'Agent'};
+
+  const nodes = [
+    {id:'RS', lbl:'Rysk Stat', role:'state', r:20, x:W/2, y:40},
+    {id:'CMD', lbl:'Kommando', role:'command', r:14, x:W/2, y:100},
+    {id:'OPS', lbl:'Ops Mgr', role:'ops', r:12, x:W/2, y:160},
+    {id:'H1', lbl:'Handler', role:'handler', r:10, x:W*0.22, y:230},
+    {id:'H2', lbl:'Handler', role:'handler', r:10, x:W*0.40, y:230},
+    {id:'H3', lbl:'Handler', role:'handler', r:10, x:W*0.62, y:230},
+    {id:'H4', lbl:'Handler', role:'handler', r:10, x:W*0.80, y:230},
+    {id:'IM1', lbl:'Interm.', role:'intermediary', r:9, x:W*0.15, y:305},
+    {id:'IM2', lbl:'Interm.', role:'intermediary', r:9, x:W*0.40, y:305},
+    {id:'IM3', lbl:'Interm.', role:'intermediary', r:9, x:W*0.65, y:305},
+    {id:'R1', lbl:'Rekr.', role:'recruiter', r:8, x:W*0.15, y:375},
+    {id:'R2', lbl:'Rekr.', role:'recruiter', r:8, x:W*0.40, y:375},
+    {id:'A1', lbl:'A', role:'agent', r:6, x:W*0.06, y:445},
+    {id:'A2', lbl:'A', role:'agent', r:6, x:W*0.17, y:445},
+    {id:'A3', lbl:'A', role:'agent', r:6, x:W*0.28, y:445},
+    {id:'A4', lbl:'A', role:'agent', r:6, x:W*0.38, y:445},
+    {id:'A5', lbl:'A', role:'agent', r:6, x:W*0.48, y:445},
+    {id:'A6', lbl:'A', role:'agent', r:6, x:W*0.59, y:445},
+    {id:'A7', lbl:'A', role:'agent', r:6, x:W*0.68, y:445},
+    {id:'A8', lbl:'A', role:'agent', r:6, x:W*0.77, y:445},
+    {id:'A9', lbl:'A', role:'agent', r:6, x:W*0.86, y:445},
+    {id:'A10', lbl:'A', role:'agent', r:6, x:W*0.93, y:445},
   ];
-  const proj=d3.geoMercator().center([20,52]).scale(W*1.05).translate([W/2,H/2]);
-  svg.append('rect').attr('width',W).attr('height',H).attr('fill','#080a0e');
-  const gridG=svg.append('g').attr('opacity',.12);
-  for(let lon=-20;lon<=65;lon+=10){const pts=d3.range(28,73,1).map(lat=>proj([lon,lat])).filter(p=>p);gridG.append('path').attr('d',pts.map((p,i)=>`${i===0?'M':'L'}${p[0]},${p[1]}`).join('')).attr('stroke','#3498db').attr('stroke-width',.3).attr('fill','none')}
-  for(let lat=28;lat<=73;lat+=10){const pts=d3.range(-20,65,1).map(lon=>proj([lon,lat])).filter(p=>p);gridG.append('path').attr('d',pts.map((p,i)=>`${i===0?'M':'L'}${p[0]},${p[1]}`).join('')).attr('stroke','#3498db').attr('stroke-width',.3).attr('fill','none')}
-  const rScale=d3.scaleSqrt().domain([1,28]).range([5,22]);
-  const europeOnly=natData.filter(d=>!['COL','CUB'].includes(d.name));
-  svg.append('g').selectAll('circle').data(europeOnly).join('circle')
-    .attr('cx',d=>{const p=proj([d.lng,d.lat]);return p?p[0]:-100})
-    .attr('cy',d=>{const p=proj([d.lng,d.lat]);return p?p[1]:-100})
-    .attr('r',d=>rScale(d.n)).attr('fill','rgba(192,57,43,0.18)').attr('stroke','#c0392b').attr('stroke-width',1.5)
-    .on('mouseover',(ev,d)=>showTooltip(ev,`${d.name}\nn = ${d.n} agenter`))
-    .on('mousemove',moveTooltip).on('mouseout',hideTooltip);
-  svg.append('g').selectAll('text').data(europeOnly.filter(d=>d.n>=4)).join('text')
-    .attr('x',d=>{const p=proj([d.lng,d.lat]);return p?p[0]:-100})
-    .attr('y',d=>{const p=proj([d.lng,d.lat]);return p?p[1]+4:-100})
-    .attr('text-anchor','middle').attr('font-family','IBM Plex Mono').attr('font-size',9).attr('fill','#eef2ff').attr('font-weight','600')
-    .text(d=>d.n);
-  svg.append('g').selectAll('text').data(europeOnly.filter(d=>d.n>=6)).join('text')
-    .attr('x',d=>{const p=proj([d.lng,d.lat]);return p?p[0]:-100})
-    .attr('y',d=>{const p=proj([d.lng,d.lat]);return p?p[1]+rScale(d.n)+12:-100})
-    .attr('text-anchor','middle').attr('font-family','IBM Plex Mono').attr('font-size',7).attr('fill','#4a5a6e')
-    .text(d=>d.name);
+
+  const links = [
+    {s:'RS',t:'CMD',type:'cmd'},{s:'CMD',t:'OPS',type:'dir'},
+    {s:'OPS',t:'H1',type:'dir'},{s:'OPS',t:'H2',type:'dir'},
+    {s:'CMD',t:'H3',type:'dir'},{s:'CMD',t:'H4',type:'dir'},
+    {s:'H1',t:'IM1',type:'dir'},{s:'H2',t:'IM2',type:'dir'},{s:'H3',t:'IM3',type:'dir'},
+    {s:'IM1',t:'R1',type:'dir'},{s:'IM2',t:'R2',type:'dir'},{s:'H4',t:'R2',type:'dir'},
+    {s:'R1',t:'A1',type:'dir'},{s:'R1',t:'A2',type:'dir'},{s:'R1',t:'A3',type:'dir'},
+    {s:'R2',t:'A4',type:'dir'},{s:'R2',t:'A5',type:'dir'},
+    {s:'H1',t:'A6',type:'dir'},{s:'H3',t:'A7',type:'dir'},{s:'H4',t:'A8',type:'dir'},
+    {s:'IM3',t:'A9',type:'dir'},{s:'IM3',t:'A10',type:'dir'},
+    {s:'A1',t:'A2',type:'col'},{s:'IM1',t:'IM2',type:'col'},
+  ];
+
+  const nmap = {};
+  nodes.forEach(n => { nmap[n.id] = n; });
+
+  // Drag state
+  let drag = null;
+  const pr = window.devicePixelRatio || 1;
+
+  function draw() {
+    ctx.clearRect(0,0,W,H);
+    ctx.fillStyle = '#080a0e';
+    ctx.fillRect(0,0,W,H);
+
+    // Draw links
+    links.forEach(l => {
+      const s = nmap[l.s], t = nmap[l.t];
+      const dx = t.x-s.x, dy = t.y-s.y, dist = Math.sqrt(dx*dx+dy*dy);
+      if (dist === 0) return;
+      const ex = t.x - (dx/dist)*t.r;
+      const ey = t.y - (dy/dist)*t.r;
+      ctx.beginPath();
+      ctx.moveTo(s.x, s.y);
+      ctx.lineTo(ex, ey);
+      if (l.type === 'col') {
+        ctx.setLineDash([4,3]);
+        ctx.strokeStyle = 'rgba(46,204,113,0.4)';
+        ctx.lineWidth = 1;
+      } else if (l.type === 'cmd') {
+        ctx.setLineDash([]);
+        ctx.strokeStyle = 'rgba(243,156,18,0.7)';
+        ctx.lineWidth = 2;
+      } else {
+        ctx.setLineDash([]);
+        ctx.strokeStyle = 'rgba(192,57,43,0.5)';
+        ctx.lineWidth = 1.5;
+      }
+      ctx.stroke();
+      ctx.setLineDash([]);
+      // Arrow
+      if (l.type !== 'col') {
+        const ang = Math.atan2(ey-s.y, ex-s.x);
+        ctx.fillStyle = l.type==='cmd' ? 'rgba(243,156,18,0.7)' : 'rgba(192,57,43,0.6)';
+        ctx.beginPath();
+        ctx.moveTo(ex, ey);
+        ctx.lineTo(ex - 7*Math.cos(ang-0.35), ey - 7*Math.sin(ang-0.35));
+        ctx.lineTo(ex - 7*Math.cos(ang+0.35), ey - 7*Math.sin(ang+0.35));
+        ctx.closePath(); ctx.fill();
+      }
+    });
+
+    // Draw nodes
+    nodes.forEach(n => {
+      const col = rc[n.role];
+      ctx.beginPath(); ctx.arc(n.x, n.y, n.r, 0, Math.PI*2);
+      ctx.fillStyle = col + '30'; ctx.fill();
+      ctx.strokeStyle = col; ctx.lineWidth = 1.5; ctx.stroke();
+      ctx.fillStyle = col;
+      ctx.font = `${n.role==='agent'?7:8}px ui-monospace,monospace`;
+      ctx.textAlign = 'center'; ctx.textBaseline = 'middle';
+      ctx.fillText(n.role==='agent' ? 'A' : n.lbl.split(' ')[0], n.x, n.y);
+    });
+  }
+
+  draw();
+
+  // Drag
+  canvas.addEventListener('mousedown', e => {
+    const rect = canvas.getBoundingClientRect();
+    const mx = (e.clientX-rect.left)*(W/rect.width);
+    const my = (e.clientY-rect.top)*(H/rect.height);
+    nodes.forEach(n => {
+      if (Math.sqrt((mx-n.x)**2+(my-n.y)**2) < n.r+4) drag = n;
+    });
+  });
+  canvas.addEventListener('mousemove', e => {
+    const rect = canvas.getBoundingClientRect();
+    const mx = (e.clientX-rect.left)*(W/rect.width);
+    const my = (e.clientY-rect.top)*(H/rect.height);
+    if (drag) { drag.x = mx; drag.y = my; draw(); return; }
+    let hit = false;
+    nodes.forEach(n => {
+      if (Math.sqrt((mx-n.x)**2+(my-n.y)**2) < n.r+4) {
+        showTT(e.clientX, e.clientY, rd[n.role]);
+        canvas.style.cursor = 'grab'; hit = true;
+      }
+    });
+    if (!hit) { hideTT(); canvas.style.cursor = 'default'; }
+  });
+  canvas.addEventListener('mouseup', () => { drag = null; });
+  canvas.addEventListener('mouseleave', () => { drag = null; hideTT(); });
 }
 
-// NAT LIST
-function drawNatList(){
-  const nats=[
+// ── MAP (Canvas) ──
+function drawMap() {
+  const canvas = document.getElementById('mapCanvas');
+  canvas.width = canvas.parentElement.clientWidth - 300 - 20;
+  if (canvas.width < 100) canvas.width = canvas.parentElement.clientWidth;
+  const W = canvas.width, H = canvas.height;
+  const ctx = canvas.getContext('2d');
+
+  const nats = [
+    {name:'Ukraina', n:28, lat:49.0, lng:31.5},
+    {name:'Ryssland/duals', n:24, lat:59.5, lng:52.0},
+    {name:'Moldavien', n:15, lat:47.4, lng:28.4},
+    {name:'Bulgarien', n:11, lat:42.7, lng:25.5},
+    {name:'Estland', n:8, lat:58.6, lng:25.0},
+    {name:'Lettland', n:7, lat:56.9, lng:24.6},
+    {name:'Vitryssland', n:7, lat:53.7, lng:28.0},
+    {name:'UK', n:6, lat:52.5, lng:-1.5},
+    {name:'Serbien', n:5, lat:44.0, lng:21.0},
+    {name:'Nederländerna', n:4, lat:52.1, lng:5.3},
+    {name:'Colombia', n:4, lat:4.6, lng:-58.0},
+    {name:'Polen', n:3, lat:51.9, lng:19.1},
+    {name:'Litauen', n:2, lat:55.2, lng:24.0},
+    {name:'Kuba', n:2, lat:25.0, lng:-55.0},
+    {name:'Tyskland', n:2, lat:51.2, lng:10.5},
+    {name:'Rumänien', n:1, lat:45.9, lng:25.0},
+    {name:'Österrike', n:1, lat:47.5, lng:14.5},
+    {name:'Spanien', n:1, lat:40.4, lng:-3.7},
+    {name:'Bosnien', n:1, lat:43.9, lng:17.7},
+  ];
+
+  // Simple Mercator projection
+  const cx = 20, cy = 52, scale = W * 1.0;
+  function proj(lng, lat) {
+    const x = W/2 + (lng-cx) * (scale/360) * (Math.PI/180) * (180/Math.PI);
+    const latRad = lat * Math.PI/180;
+    const mercN = Math.log(Math.tan(Math.PI/4 + latRad/2));
+    const y = H/2 - mercN * scale/(2*Math.PI);
+    return {x, y};
+  }
+
+  ctx.fillStyle = '#080a0e';
+  ctx.fillRect(0,0,W,H);
+
+  // Grid
+  ctx.strokeStyle = 'rgba(52,152,219,0.15)'; ctx.lineWidth = 0.5;
+  for (let lon=-20; lon<=65; lon+=10) {
+    ctx.beginPath();
+    for (let lat=25; lat<=73; lat+=2) {
+      const p = proj(lon,lat);
+      lat===25 ? ctx.moveTo(p.x,p.y) : ctx.lineTo(p.x,p.y);
+    }
+    ctx.stroke();
+  }
+  for (let lat=25; lat<=73; lat+=10) {
+    ctx.beginPath();
+    for (let lon=-25; lon<=70; lon+=2) {
+      const p = proj(lon,lat);
+      lon===-25 ? ctx.moveTo(p.x,p.y) : ctx.lineTo(p.x,p.y);
+    }
+    ctx.stroke();
+  }
+
+  const maxN = 28;
+  function rScale(n) { return 5 + Math.sqrt(n/maxN) * 20; }
+
+  // Bubbles
+  nats.forEach(nat => {
+    const p = proj(nat.lng, nat.lat);
+    if (p.x < -20 || p.x > W+20 || p.y < -20 || p.y > H+20) return;
+    const r = rScale(nat.n);
+    ctx.beginPath(); ctx.arc(p.x, p.y, r, 0, Math.PI*2);
+    ctx.fillStyle = 'rgba(192,57,43,0.18)'; ctx.fill();
+    ctx.strokeStyle = '#c0392b'; ctx.lineWidth = 1.5; ctx.stroke();
+    if (nat.n >= 4) {
+      ctx.fillStyle = '#e8f0ff';
+      ctx.font = `bold ${nat.n>=10?10:9}px ui-monospace,monospace`;
+      ctx.textAlign = 'center'; ctx.textBaseline = 'middle';
+      ctx.fillText(nat.n, p.x, p.y);
+    }
+    if (nat.n >= 6) {
+      ctx.fillStyle = '#4a5a6e';
+      ctx.font = '7px ui-monospace,monospace';
+      ctx.textAlign = 'center'; ctx.textBaseline = 'top';
+      ctx.fillText(nat.name, p.x, p.y + r + 3);
+    }
+  });
+
+  // Hover
+  canvas.onmousemove = (e) => {
+    const rect = canvas.getBoundingClientRect();
+    const mx = (e.clientX-rect.left)*(W/rect.width);
+    const my = (e.clientY-rect.top)*(H/rect.height);
+    let hit = false;
+    nats.forEach(nat => {
+      const p = proj(nat.lng, nat.lat);
+      const r = rScale(nat.n);
+      if (Math.sqrt((mx-p.x)**2+(my-p.y)**2) < r+4) {
+        showTT(e.clientX, e.clientY, nat.name+'<br>n = '+nat.n+' agenter<br>'+(nat.n/136*100).toFixed(1)+'% av total');
+        hit = true;
+      }
+    });
+    if (!hit) hideTT();
+  };
+  canvas.onmouseleave = hideTT;
+}
+
+// ── NAT LIST ──
+function drawNatList() {
+  const nats = [
     {name:'Ukraina',n:28,col:'#3498db'},{name:'Ryssland/duals',n:24,col:'#c0392b'},
     {name:'Moldavien',n:15,col:'#8e44ad'},{name:'Bulgarien',n:11,col:'#d35400'},
     {name:'Estland',n:8,col:'#1e8449'},{name:'Lettland',n:7,col:'#c0a000'},
     {name:'Vitryssland',n:7,col:'#c0a000'},{name:'UK',n:6,col:'#2980b9'},
     {name:'Serbien',n:5,col:'#7f8c8d'},{name:'Colombia',n:4,col:'#7f8c8d'},
   ];
-  document.getElementById('natRankList').innerHTML=nats.map(d=>
-    `<div class="nat-rank-item" style="border-left-color:${d.col}"><div><div class="nat-rank-name">${d.name}</div><div style="font-size:9px;color:var(--text-dim);font-family:var(--mono)">${(d.n/136*100).toFixed(1)}%</div></div><div class="nat-rank-n">${d.n}</div></div>`
+  document.getElementById('natList').innerHTML = nats.map(d =>
+    `<div class="nat-item" style="border-left-color:${d.col}"><div><div class="nat-name">${d.name}</div><div style="font-size:9px;color:var(--text-dim);font-family:var(--mono)">${(d.n/136*100).toFixed(1)}%</div></div><div class="nat-n">${d.n}</div></div>`
   ).join('');
 }
 
-// MOTIVATION MATRIX
-function drawMotMatrix(){
-  const roles=['Agent','Handler','Intermediary','Rekryterare'];
-  const mots=['Monetär','Ideologisk','Ovetande','Lojalitet','Okänd'];
-  const counts={
-    Agent:{Monetär:46,Ideologisk:5,Ovetande:7,Lojalitet:4,Okänd:30},
-    Handler:{Monetär:10,Ideologisk:6,Ovetande:0,Lojalitet:0,Okänd:8},
-    Intermediary:{Monetär:5,Ideologisk:2,Ovetande:0,Lojalitet:5,Okänd:3},
-    Rekryterare:{Monetär:6,Ideologisk:1,Ovetande:0,Lojalitet:1,Okänd:4},
+// ── MOTIVATION MATRIX (Canvas) ──
+function drawMatrix() {
+  const canvas = document.getElementById('matCanvas');
+  canvas.width = canvas.parentElement.clientWidth - 44;
+  const W = canvas.width, H = canvas.height;
+  const ctx = canvas.getContext('2d');
+  ctx.clearRect(0,0,W,H);
+
+  const roles = ['Agent','Handler','Intermediary','Rekryterare'];
+  const mots = ['Monetär','Ideologisk','Ovetande','Lojalitet','Okänd'];
+  const data = {
+    Agent:       {Monetär:46,Ideologisk:5,Ovetande:7,Lojalitet:4,Okänd:30},
+    Handler:     {Monetär:10,Ideologisk:6,Ovetande:0,Lojalitet:0,Okänd:8},
+    Intermediary:{Monetär:5, Ideologisk:2,Ovetande:0,Lojalitet:5,Okänd:3},
+    Rekryterare: {Monetär:6, Ideologisk:1,Ovetande:0,Lojalitet:1,Okänd:4},
   };
-  const el=document.getElementById('motivationMatrix');
-  const W=el.parentElement.clientWidth-48||600;
-  const H=220;
-  el.setAttribute('width',W);el.setAttribute('height',H);
-  const svg=d3.select('#motivationMatrix');svg.selectAll('*').remove();
-  const m={top:32,right:16,bottom:10,left:108};
-  const w=W-m.left-m.right,h=H-m.top-m.bottom;
-  const g=svg.append('g').attr('transform',`translate(${m.left},${m.top})`);
-  const x=d3.scaleBand().domain(roles).range([0,w]).padding(0.08);
-  const y=d3.scaleBand().domain(mots).range([0,h]).padding(0.08);
-  const cScale=d3.scaleSequential().domain([0,46]).interpolator(d3.interpolate('#0d1117','#c0392b'));
-  roles.forEach(role=>mots.forEach(mot=>{
-    const val=counts[role][mot]||0;
-    g.append('rect').attr('x',x(role)).attr('y',y(mot)).attr('width',x.bandwidth()).attr('height',y.bandwidth())
-      .attr('fill',val>0?cScale(val):'#0d1117').attr('stroke','#1c2333').attr('stroke-width',1).attr('rx',2)
-      .on('mouseover',ev=>{if(val>0)showTooltip(ev,`${role} / ${mot}\nn = ${val}`)})
-      .on('mousemove',moveTooltip).on('mouseout',hideTooltip);
-    if(val>0)g.append('text').attr('x',x(role)+x.bandwidth()/2).attr('y',y(mot)+y.bandwidth()/2+1)
-      .attr('text-anchor','middle').attr('dominant-baseline','middle').attr('font-family','IBM Plex Mono')
-      .attr('font-size',val>9?12:10).attr('font-weight',val>20?'600':'400')
-      .attr('fill',val>15?'#eef2ff':'#aaa').text(val);
-  }));
-  g.append('g').call(d3.axisTop(x).tickSize(0)).call(ax=>{ax.select('.domain').remove();ax.selectAll('text').style('font-family','IBM Plex Mono').style('font-size','10px').style('fill','#c8d6e8')});
-  g.append('g').call(d3.axisLeft(y).tickSize(0)).call(ax=>{ax.select('.domain').remove();ax.selectAll('text').style('font-family','IBM Plex Mono').style('font-size','10px').style('fill','#c8d6e8').attr('dx','-4')});
+
+  const m = {t:28, r:10, b:10, l:90};
+  const w = W-m.l-m.r, h = H-m.t-m.b;
+  const cw = w/roles.length, ch = h/mots.length;
+
+  function lerp(a, b, t) {
+    const ah = parseInt(a.slice(1,3),16), ag = parseInt(a.slice(3,5),16), ab2 = parseInt(a.slice(5,7),16);
+    const bh = parseInt(b.slice(1,3),16), bg = parseInt(b.slice(3,5),16), bb2 = parseInt(b.slice(5,7),16);
+    const r2 = Math.round(ah+(bh-ah)*t), g2 = Math.round(ag+(bg-ag)*t), bl2 = Math.round(ab2+(bb2-ab2)*t);
+    return `rgb(${r2},${g2},${bl2})`;
+  }
+
+  // Column headers
+  ctx.fillStyle = '#c8d6e8'; ctx.font = '10px ui-monospace,monospace'; ctx.textAlign = 'center'; ctx.textBaseline = 'middle';
+  roles.forEach((r,i) => ctx.fillText(r, m.l + i*cw + cw/2, 14));
+
+  // Row headers
+  ctx.textAlign = 'right'; ctx.textBaseline = 'middle';
+  mots.forEach((mot,j) => ctx.fillText(mot, m.l-6, m.t + j*ch + ch/2));
+
+  // Cells
+  roles.forEach((role,i) => {
+    mots.forEach((mot,j) => {
+      const val = data[role][mot] || 0;
+      const t2 = val/46;
+      const x = m.l + i*cw + 2, y = m.t + j*ch + 2;
+      const bw = cw-4, bh = ch-4;
+      ctx.fillStyle = val > 0 ? lerp('#111520','#c0392b',t2) : '#0d1117';
+      ctx.beginPath(); ctx.roundRect(x,y,bw,bh,3); ctx.fill();
+      ctx.strokeStyle = '#1c2333'; ctx.lineWidth = 1;
+      ctx.beginPath(); ctx.roundRect(x,y,bw,bh,3); ctx.stroke();
+      if (val > 0) {
+        ctx.fillStyle = t2 > 0.5 ? '#eef2ff' : '#8a9ab0';
+        ctx.font = `${val>9?'bold ':''} ${val>9?13:11}px ui-monospace,monospace`;
+        ctx.textAlign = 'center'; ctx.textBaseline = 'middle';
+        ctx.fillText(val, m.l+i*cw+cw/2, m.t+j*ch+ch/2);
+      }
+    });
+  });
+
+  // Hover
+  canvas.onmousemove = (e) => {
+    const rect = canvas.getBoundingClientRect();
+    const mx = (e.clientX-rect.left)*(W/rect.width);
+    const my = (e.clientY-rect.top)*(H/rect.height);
+    const ci = Math.floor((mx-m.l)/cw);
+    const ri = Math.floor((my-m.t)/ch);
+    if (ci>=0&&ci<roles.length&&ri>=0&&ri<mots.length) {
+      const val = data[roles[ci]][mots[ri]]||0;
+      showTT(e.clientX, e.clientY, roles[ci]+' / '+mots[ri]+'<br>n = '+val);
+    } else hideTT();
+  };
+  canvas.onmouseleave = hideTT;
 }
 
-// SCROLL REVEAL
-const obs=new IntersectionObserver(entries=>entries.forEach(e=>{if(e.isIntersecting)e.target.classList.add('visible')}),{threshold:.1});
-document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));
+// ── INIT ──
+function initAll() {
+  drawYOB();
+  drawNetwork();
+  drawMap();
+  drawNatList();
+  drawMatrix();
+}
 
-// NAV ACTIVE
-const sections=document.querySelectorAll('section[id]');
-window.addEventListener('scroll',()=>{
-  let cur='';sections.forEach(s=>{if(window.scrollY>=s.offsetTop-120)cur=s.id});
-  document.querySelectorAll('.nav-link').forEach(l=>l.classList.toggle('active',l.getAttribute('href')==='#'+cur));
+window.addEventListener('load', initAll);
+window.addEventListener('resize', () => {
+  drawYOB();
+  drawNetwork();
+  drawMap();
+  drawMatrix();
 });
-
-// INIT + RESIZE
-function initAll(){drawYOB();drawNetwork();drawMap();drawNatList();drawMotMatrix()}
-window.addEventListener('load',initAll);
-window.addEventListener('resize',()=>{drawYOB();drawNetwork();drawMap();drawMotMatrix()});
-<\/script>
+</script>
 </body>
 </html>
